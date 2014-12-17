@@ -1,4 +1,4 @@
-#! /usr/local/python2.7.8/bin/python2.7
+#! /usr/bin/python
 #encoding: utf-8
  #        .---.         .-----------  
  #       /     \  __  /    ------    
@@ -57,4 +57,8 @@ class pcolor:
         self.ENDC = ''
         self.WARNING = ''
  
+num = input("enter a number: ")
 
+divisor = range(num, 1000, num)
+for ele in divisor:
+    print ele,
