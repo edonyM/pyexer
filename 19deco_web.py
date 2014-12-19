@@ -59,14 +59,15 @@ class pcolor:
  
 import requests
 from bs4 import BeautifulSoup
+import re
+import string
 
 r = requests.get("http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture")
 r_html = r.text
 soup = BeautifulSoup(r_html)
 article = soup.find_all("div",class_="parbase cn_text")
 for ele in article:
-    markup = ele
-    soup = BeautifulSoup(markup)
-    tmp = soup.get_text()
+    tmp = str(ele)
+    tmp = tmp.replace('dive class="parbase cn_text"',' ')
     print tmp
 
