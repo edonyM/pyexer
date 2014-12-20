@@ -63,10 +63,10 @@ r = requests.get("http://www.vanityfair.com/society/2014/06/monica-lewinsky-humi
 str = r.text
 soup = BeautifulSoup(str)
 tmp = unicode(soup.find('div',class_='parbase cn_text').text)
-print tmp
-with open('file_save.txt','w') as file:
-    file.write("First file\n")
-    art = tmp.encode
-    file.write(art)
-    file.close()
+with open('file_save.txt','w') as file_to:
+    art = tmp.encode('ascii','ignore')
+    print art
+    file_to.write(art)
+
+file_to.close()
 
