@@ -16,9 +16,9 @@
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified: 2014-12-19 20:40
+ # Last modified: 2014-12-20 16:51
  # 
- # Filename: 19deco_web.py
+ # Filename: 20ele_search.py
  # 
  # Description: All Rights Are Reserved                 
 class pcolor:
@@ -57,34 +57,26 @@ class pcolor:
         self.ENDC = ''
         self.WARNING = ''
  
-import requests
-from bs4 import BeautifulSoup
-import re
-import string
+def bin_sear(ls, ele):
+    num_tmp = len(ls)
+    while num_tmp != 0:
+        if ele in ls:
+            if ele > ls[num_tmp / 2]:
+                bin_sear(ls[num_tmp / 2 + 1:], ele)
+            elif ele < ls[num_tmp / 2]:
+                bin_sear(ls[:num_tmp / 2 - 1], ele)
+            else:
+                return True
+        num_tmp /= 2
+    return False
 
-r = requests.get("http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture")
-r_html = r.text
-soup = BeautifulSoup(r_html)
-#text = []
-#for sent in soup.find_all("div", class_="parbase cn_text"):
-#    if sent:
-#        tmp = sent.get('p')
-#        print tmp
-#        text.append(tmp)
-#
-#soup = BeautifulSoup(html)
-# kill all script and style elements
-for script in soup(["script", "style"]):
-    script.extract()    # rip it out
+if __name__ == "__main__":
+    ls = input("Enter the list: ")
+    ele = input("Check the ele: ")
+    tmp = bin_sear(ls,ele)
+    if tmp:
+        print "true"
+    else:
+        print "false"
 
-# get text
-text = soup.get_text()
 
-# break into lines and remove leading and trailing space on each
-lines = (line.strip() for line in text.splitlines())
-# break multi-headlines into a line each
-chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-# drop blank lines
-text = '\n'.join(chunk for chunk in chunks if chunk)
-
-print(text)
