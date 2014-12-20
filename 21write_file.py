@@ -16,9 +16,9 @@
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified:	2014-12-20 19:10
+ # Last modified: 2014-12-20 19:06
  # 
- # Filename:		20ele_search.py
+ # Filename: 21write_file.py
  # 
  # Description: All Rights Are Reserved                 
 class pcolor:
@@ -57,26 +57,16 @@ class pcolor:
         self.ENDC = ''
         self.WARNING = ''
  
-def bin_sear(ls, ele):
-    num_tmp = len(ls)
-    while num_tmp != 0:
-        if ele in ls:
-            if ele > ls[num_tmp / 2]:
-                bin_sear(ls[num_tmp / 2 + 1:], ele)
-            elif ele < ls[num_tmp / 2]:
-                bin_sear(ls[:num_tmp / 2 - 1], ele)
-            else:
-                return True
-        num_tmp /= 2
-    return False
-
-if __name__ == "__main__":
-    ls = input("Enter the list: ")
-    ele = input("Check the ele: ")
-    tmp = bin_sear(ls,ele)
-    if tmp:
-        print "true"
-    else:
-        print "false"
-
+import requests
+from bs4 import BeautifulSoup
+r = requests.get("http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture")
+str = r.text
+soup = BeautifulSoup(str)
+tmp = unicode(soup.find('div',class_='parbase cn_text').text)
+print tmp
+with open('file_save.txt','w') as file:
+    file.write("First file\n")
+    art = tmp.encode
+    file.write(art)
+    file.close()
 
