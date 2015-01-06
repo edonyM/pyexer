@@ -90,9 +90,8 @@ cv_loss = np.array(np.zeros((4,7)))
 ind_loss = np.array(np.zeros((4,7)))
 train_loss = np.array(np.zeros((4,7)))
 
+# LOOCV
 for deg in range(1,maxdegree+1):
-    #print 'deg'
-    #print deg
     x_power = num_power(x,deg)
     testx_power = num_power(testx,deg)
     X_mat = np.concatenate((X_mat,[x_power]),axis=0)
@@ -126,5 +125,8 @@ print ind_loss
 print "------"
 print train_loss
 print "------"
-plt.plot(range(1,maxdegree+1),np.mean(cv_loss,axis=0),'r:',range(1,maxdegree+1),np.mean(ind_loss,axis=0),'b--',range(1,maxdegree+1),np.mean(train_loss,axis=0),'g+')
+line1,=plt.plot(range(1,maxdegree+1),np.mean(cv_loss,axis=0),'r:',label='CV loss',linewidth=2)
+line2,=plt.plot(range(1,maxdegree+1),np.mean(ind_loss,axis=0),'b--',label='independent loss',linewidth=2)
+line3,=plt.plot(range(1,maxdegree+1),np.mean(train_loss,axis=0),'g+',label='train loss',linewidth=2)
+plt.legend(loc=2,fontsize='small')
 plt.show()
