@@ -69,43 +69,62 @@ def del_col(mat,fold,N,K):
             np.delete(mat,col_num,1)
     return mat
 
-x = np.array([1896,1900,1904,1906,1908,1912,1920,1924,1928,1932,1936,1948,1952,1956,1960,1964,1968,1972,1976,1980])
+def num_power(x,deg):
+    tmp = np.array(np.zeros(x.size))
+    for counter in range(x.size):
+        tmp[counter] = long(int(x[0][counter])**deg)
+    return tmp
+
+x = np.array([[1896,1900,1904,1906,1908,1912,1920,1924,1928,1932,1936,1948,1952,1956,1960,1964,1968,1972,1976,1980]])
 t = np.array([12.00,11.00,11.00,11.20,10.80,10.80,10.80,10.60,10.80,10.30,10.30,10.30,10.40,10.50,10.20,10.00,9.95,10.14,10.06,10.25])
-testx = np.array([1984,1988,1992,1996,2000,2004,2008])
+testx = np.array([[1984,1988,1992,1996,2000,2004,2008]])
 testt = np.array([9.99,9.92,9.96,9.84,9.87,9.85,9.69])
 N = x.size
 K = 4 # K-fold CV
 maxdegree = 7 # max degree of the model
-X_mat = np.matrix(np.ones(20))
-testX_mat = np.matrix(np.ones(20))
+X_mat = np.array([np.ones(20)])
+testX_mat = np.array([np.ones(7)])
 t_mat = np.matrix(t)
 testt_mat = np.matrix(testt)
+cv_loss = np.array(np.zeros((4,7)))
+ind_loss = np.array(np.zeros((4,7)))
+train_loss = np.array(np.zeros((4,7)))
 
-for k in range(1,K):
-    X_mat = np.matrix([X_mat,np.matrix(x**k)])
-    testX_mat = np.matrix([testX_mat,np.matrix(testx**k)])
+for deg in range(1,maxdegree+1):
+    #print 'deg'
+    #print deg
+    x_power = num_power(x,deg)
+    testx_power = num_power(testx,deg)
+    X_mat = np.concatenate((X_mat,[x_power]),axis=0)
+    X_mat = np.matrix(X_mat)
+    testX_mat = np.concatenate((testX_mat,[testx_power]),axis=0)
+    testX_mat = np.matrix(testX_mat)
     tmpX_mat = X_mat
     tmpt_mat = t_mat
     for fold in range(K):
-        trainX = del_col(tmpX_mat,fold,N,K)
-        print trainX
-        foldX = X_mat[fold*5:(fold+1)*5,:]
-        print foldX
-        traint = del_col(tmpt_mat,fold,N,K)
-        foldt = t_mat[fold*5:(fold+1)*5,:]
+        trainX_trans = del_col(tmpX_mat,fold,N,K)
+        foldX_trans = X_mat[:,fold*5:(fold+1)*5]
+        traint_trans = del_col(tmpt_mat,fold,N,K)
+        foldt_trans = t_mat[:,fold*5:(fold+1)*5]
 
-        w = trainX.getT()
-        w = w.dot(trainX)
-        w = w.getI()
-        w = w.dot(trainX.getT())
-        w = w.dot(traint)
-        fold_pred = foldX*w
-        cv_loss[fold,k+1] = mean((fold_pre - foldt)**2)
-        ind_pred = testX_mat*w
-        ind_loss[fold,k+1] = mean((testt_mat - ind_pred)**2)
-        train_pred = trainX*w
-        train_loss[fold,k+1] = mean((train_pred - traint)**2)
+        # compute the para 'w' of fit model
+        # 'w' is an array inlcuding polynomial para
+        w = ((trainX_trans * trainX_trans.T).I) * trainX_trans * (traint_trans.T)
 
+        # calculate the loss
+        fold_pred = foldX_trans.T*w
+        cv_loss[fold,deg-1] = np.mean((np.array(fold_pred - foldt_trans.T))**2,axis=0)
+        ind_pred = testX_mat.T*w
+        ind_loss[fold,deg-1] = np.mean((np.array(testt_mat - ind_pred))**2)
+        train_pred = trainX_trans.T*w
+        train_loss[fold,deg-1] = np.mean((np.array(train_pred - traint_trans.T))**2)
+
+# view the results
 print cv_loss
+print "------"
 print ind_loss
+print "------"
 print train_loss
+print "------"
+plt.plot(range(1,maxdegree+1),np.mean(cv_loss,axis=0),'r:',range(1,maxdegree+1),np.mean(ind_loss,axis=0),'b--',range(1,maxdegree+1),np.mean(train_loss,axis=0),'g+')
+plt.show()
