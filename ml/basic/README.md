@@ -1,5 +1,5 @@
 This folder is the exercise about the book 'A First Course in Machine Learning'
-* NO.1 Leave-One-Out Cross Validation('k_fold_CV.py')
+###* NO.1 Leave-One-Out Cross Validation('k_fold_CV.py')
 
 ![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/figure_1.png)
 
@@ -11,7 +11,7 @@ This folder is the exercise about the book 'A First Course in Machine Learning'
 
 3. other degrees can not be judged by CV for the model is not ensure, I need other algorithms to find the best model
 
-* NO.2 Regularization Least Square('regular_ls.py')
+###* NO.2 Regularization Least Square('regular_ls.py')
 
 ![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/regularization_least-square_fitting.png)
 
