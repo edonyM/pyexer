@@ -76,5 +76,8 @@ fig = plt.figure(1)
 ax = axe(fig)
 ax.plot_surface(x1,x2,p,cstride=10,rstride=10,alpha=0.5,color='y')
 ax.plot_wireframe(x1,x2,p2,cstride=10,rstride=10,color='r')
+fig2 = plt.figure(2)
+plt.contour(x1,x2,p,colors='y')
+plt.contour(x1,x2,p2,colors='r')
 plt.show()
 
