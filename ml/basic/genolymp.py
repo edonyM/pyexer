@@ -62,6 +62,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
+import math as m
  
 f = open("olympics.txt",'r')
 x = np.array([])
@@ -81,11 +82,12 @@ w = np.matrix(w)
 mean_t = X*w
 mean_t = np.array(mean_t)
 
-noise_var = 0.01
-noisy_t = mean_t + np.random.randn(mean_t.shape[0],mean_t.shape[1])*noise_var
+noise_var = 0.01    # vary this to change the noise level
+noisy_t = mean_t + np.random.randn(mean_t.shape[0],mean_t.shape[1])*m.sqrt(noise_var)
 
 
 plt.plot(x,mean_t,'k',x,noisy_t,'b+')
 for i in range(x.size):
     plt.plot([x[i],x[i]],[mean_t[i],noisy_t[i]],'r--')
+plt.plot(x,t,'go')
 plt.show()
