@@ -64,13 +64,21 @@ from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
 import math as m
  
+'''
+p(t | xn=1980,w,sigma^2)
+t = f(x;w) + epsional
+    epsional ~ N(0,sigma^2)
+    t ~ N(mu,sigma^2)
+    mu = x*w
+    sigma^ = 0.05
+'''
 w = np.array([36.416,-0.0133])
 x = np.array([1,1980])
 w = np.matrix(w.T)
 x = np.matrix(x.T)
 sigma2 = 0.05
 sigma = m.sqrt(sigma2)
-mu = w*x.T
+mu = x*w.T
 t = np.array(np.linspace(9.5,10.8,num=500))
 rm = st.norm(mu,sigma)
 p = rm.pdf(t)
