@@ -60,8 +60,7 @@ class pcolor:
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
-import mpl_toolkits.mplot3d as axes3d
-from mpl_toolkits.mplot3d import Axes3D as axe
+from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
 
 x1,x2 = np.mgrid[-2:4:0.01,-2:4:0.01]
@@ -73,7 +72,7 @@ p = rv.pdf(pos)
 rv2 = st.multivariate_normal([2,1],[[1,0.8],[0.8,1]])
 p2 = rv2.pdf(pos)
 fig = plt.figure(1)
-ax = axe(fig)
+ax = Ax3(fig)
 ax.plot_surface(x1,x2,p,cstride=10,rstride=10,alpha=0.5,color='y')
 ax.plot_wireframe(x1,x2,p2,cstride=10,rstride=10,color='r')
 fig2 = plt.figure(2)
