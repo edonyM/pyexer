@@ -26,3 +26,10 @@ details are as follows:
 3. compute the cv-loss of the regularization least sqaure model
 
 4. according to the cv-loss of each model, the loss should be smaller but not the smalleat and the lamda is the same
+
+
+P.S.
+    when I update the matplotlib package for MacOSX, I can not import matplotlib.pyplot for can not from six.moves import _thread. For the solution from Stackoverflow, I have to covert the python-dateutil into previous version.
+    cmds:
+        `sudo pip uninstall python-dateutil`
+        `sudo pip install python-dateutil==2.2`
