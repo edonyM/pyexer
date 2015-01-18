@@ -87,11 +87,15 @@ sigma = np.array(np.zeros(10))
 # degree of polynomial is 9
 for i in range(9):
     Xm = np.matrix(X.T)
-    sigma2[i] = (1/float(t.size))*(T.T*T-T.T*Xm*(Xm.T*Xm).I*Xm.T*T)
     w = (Xm.T*Xm).I*Xm.T*T
+    sigma2[i] = (1/float(t.size))*(T.T*T-T.T*Xm*(Xm.T*Xm).I*Xm.T*T)
     sigma[i] = 1/N*(T.T*T-T.T*Xm*w)
     mu = np.array(Xm*w)
-    logL[i] = np.sum(sp.random.multivariate_normal(mu,sig))
+    rv = st.norm(Xm*w,m.sqrt(sigma2[i]))
+    tmp = rv.logpdf(T)
+    #for num in range(tmp.size):
+    #    tmp[num] = m.log(tmp[num])
+    logL[i] = np.sum(tmp)
     X = np.concatenate((X,[x**(i+2)]),axis=0)
 
 plt.plot(range(9),logL,'k-')
