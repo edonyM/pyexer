@@ -51,7 +51,8 @@ class pcolor:
     \033[1;31;40m   <!--1-高亮显示 31-前景色红色  40-背景色黑色-->
     \033[0m         <!--采用终端默认设置，即取消颜色设置-->
     '''
-    WARNING = '\033[0;37;41m'
+    WARNING = '\033[0;31;40m'
+    NOTE = '\033[0;32;40m'
     ENDC = '\033[0m'
     def disable(self):
         self.ENDC = ''
@@ -90,6 +91,29 @@ for i in range(9):
     w = (Xm.T*Xm).I*Xm.T*T
     sigma2[i] = (1/float(t.size))*(T.T*T-T.T*Xm*(Xm.T*Xm).I*Xm.T*T)
     sigma[i] = 1/N*(T.T*T-T.T*Xm*w)
+
+    # Fisher Information Matrix
+    # '''
+    # ...Info Matrix (diagnol elements) provides some information of the member in 'w'
+    # ...If the elements in Info Matrix are negative smaller, it means this member in 'w' contains more information and vice versa.
+    # '''
+    I = 1/sigma2[i]*(Xm.T*Xm)
+    print pcolor.WARNING,
+    print I,pcolor.ENDC
+
+    # Covariance of w
+    # '''
+    # The undeterminacy and determinacy of parameter 'w'(variability of 'w') are included in the covariance of the 'w'
+    # ...The diagnol elements of cov(w) represent variability of each element in 'w'.
+    # ...The non-diagnol elements of cov(w) represent co-variability of the two 'w' element.
+    # ...If the elements in 'w' are positive bigger or negative smaller, that means the element is not well defined by model
+    # ...If the elements in 'w' that are not the diagnol elements and positive bigger, that means increasing one of the member on 'w' will lead to the other decreasing.
+    # ...If the elements in 'w' that are not the diagnol elements and negative smaller, that means decreasing one of the member on 'w' will lead to the other increasing.
+    # '''
+    cov = sigma2[i]*(Xm.T*Xm).I
+    print pcolor.NOTE,
+    print cov,pcolor.ENDC
+
     mu = np.array(Xm*w)
     rv = st.norm(Xm*w,m.sqrt(sigma2[i]))
     tmp = rv.logpdf(T)
