@@ -83,6 +83,8 @@ mean_t = X*w
 mean_t = np.array(mean_t)
 
 noise_var = 0.05    # vary this to change the noise level
+cov = noise_var*(X.T*X).I # covariability of parameter w
+print cov
 # For random samples from :math:`N(\mu, \sigma^2)`, use:
 #         ``sigma * np.random.randn(...) + mu``
 noisy_t = mean_t + np.random.randn(mean_t.shape[0],mean_t.shape[1])*m.sqrt(noise_var)
