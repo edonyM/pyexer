@@ -97,6 +97,10 @@ for i in range(1,9):
     sigma2 = np.array((1.0/N)*(t.T*t - t.T*X*w))
     testmean = testX*w
     sigma2 = sigma2.flatten()
+    # calculate the variability of testx
+    # `testX*(X.T*X).I*testX.T)` is the covariability of the testX
+    # the diagonal of this matrix is the variability of the testx
+    # the proving details are on the page59
     testvar = sigma2*np.diagonal(np.array(testX*(X.T*X).I*testX.T))
     plt.figure(i)
     plt.plot(x,np.array(t),'k.',ms=5)
