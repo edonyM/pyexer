@@ -83,9 +83,9 @@ for pos in range(100):
 t = np.matrix(t)
 t = t.T
 
+# Visualize the variability of testx with w respectively
 testx = np.arange(-5.0,5.0,0.1)
 plotcounter = 1
-
 for i in range(1,9):
     X = np.array([np.ones(x.shape)])
     testX = np.array([np.ones(testx.shape)])
@@ -122,4 +122,33 @@ for i in range(1,9):
         ax2.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
         ax2.set_xlabel("%i"%i)
         plotcounter +=1
+
+# Visualize each predicted equation
+for i in range(1,9):
+    X = np.array([np.ones(x.shape)])
+    testX = np.array([np.ones(testx.shape)])
+    for k in range(1,i+1):
+        X = np.concatenate((X,[x**k]),axis=0)
+        testX = np.concatenate((testX,[testx**k]),axis=0)
+    X = np.matrix(X.T)
+    testX = np.matrix(testX.T)
+    w = (X.T*X).I*X.T*t
+    sigma2 = np.array((1.0/N)*(t.T*t - t.T*X*w))
+    sigma2 = sigma2.flatten()
+    cov = sigma2*np.array((X.T*X).I)
+    # calculate some samples value of w
+    w_tmp = np.tile(w,10)
+    w_sample = w_tmp + np.linalg.cholesky(cov)*np.matrix(sp.random.randn(w.shape[0],10))
+    testw = testX*w_sample
+    px = np.array(testx)
+    fig = plt.figure(i+4)
+    ax = plt.subplot(1,1,1)
+    ax.plot(x,np.array(t),'ko')
+    xt = np.arange(-6,6,0.1)
+    ax.plot(xt,5*xt**3-xt**2+xt,'k-')
+    for j in range(testw.shape[1]):
+        py = np.array(testw[:,j])
+        ax.plot(px,py,'k:')
+    plt.axis([-1,1,-30,30])
+    plt.title("Degree of the prediction: %i"%i)
 plt.show()
