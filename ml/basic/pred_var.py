@@ -150,7 +150,7 @@ for i in range(1,9):
     for j in range(testw.shape[1]):
         py = np.array(testw[:,j])
         ax.plot(px,py,'k:')
-    plt.axis([-1,1,-30,30])
+    plt.axis([-1,1,-20,20])
     plt.title("Degree of the prediction: %i"%i)
     fig.savefig("w distribution degress: %i"%i)
 plt.show()
