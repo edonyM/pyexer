@@ -1,7 +1,7 @@
 This folder is the exercise about the book 'A First Course in Machine Learning'
 ###* NO.1 Leave-One-Out Cross Validation('k_fold_CV.py')
 
-![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/figure_1.png)
+![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/png/figure_1.png)
 
 > according to the png,I will do some analyse.
 
@@ -13,7 +13,7 @@ This folder is the exercise about the book 'A First Course in Machine Learning'
 
 ###* NO.2 Regularization Least Square('regular_ls.py')
 
-![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/regularization_least-square_fitting.png)
+![Results](https://github.com/edonyM/pyexer/blob/master/ml/basic/png/regularization_least-square_fitting.png)
 
 > another way to solve the overfitting and generalization problem. CV methon is used to get the value of lamda
 
