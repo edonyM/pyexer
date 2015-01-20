@@ -84,6 +84,7 @@ t = np.matrix(t)
 t = t.T
 
 testx = np.arange(-5.0,5.0,0.1)
+plotcounter = 1
 
 for i in range(1,9):
     X = np.array([np.ones(x.shape)])
@@ -105,9 +106,20 @@ for i in range(1,9):
     # calculate the covariance and the diagnoal of the return matrix is the variability of each element
     # testvar is the variablity of each element
     testvar = sigma2*np.diagonal(np.array(testX*(X.T*X).I*testX.T))
-    plt.figure(i)
-    plt.plot(x,np.array(t),'k.',ms=8)
-    y = np.array(testmean)
-    y = y.flatten()
-    plt.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
+    if (i%2)!=0:
+        fig = plt.figure(plotcounter)
+        ax1 = plt.subplot(2,1,1)
+        ax1.plot(x,np.array(t),'k.',ms=8)
+        y = np.array(testmean)
+        y = y.flatten()
+        ax1.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
+        ax1.set_xlabel("%i"%i)
+    else:
+        ax2 = plt.subplot(2,1,2)
+        ax2.plot(x,np.array(t),'k.',ms=8)
+        y = np.array(testmean)
+        y = y.flatten()
+        ax2.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
+        ax2.set_xlabel("%i"%i)
+        plotcounter +=1
 plt.show()
