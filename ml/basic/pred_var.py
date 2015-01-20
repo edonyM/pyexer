@@ -100,11 +100,14 @@ for i in range(1,9):
     # calculate the variability of testx
     # `testX*(X.T*X).I*testX.T)` is the covariability of the testX
     # the diagonal of this matrix is the variability of the testx
-    # the proving details are on the page59
+    # the proving of this equation details are on the page59
+    # the equation 'covar = sigma2*(testX*(X.T*X).I*testX.T)'
+    # calculate the covariance and the diagnoal of the return matrix is the variability of each element
+    # testvar is the variablity of each element
     testvar = sigma2*np.diagonal(np.array(testX*(X.T*X).I*testX.T))
     plt.figure(i)
-    plt.plot(x,np.array(t),'k.',ms=5)
+    plt.plot(x,np.array(t),'k.',ms=8)
     y = np.array(testmean)
     y = y.flatten()
-    plt.errorbar(testx,y,yerr=testvar,elinewidth=0.35,errorevery=1,ecolor='red')
+    plt.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
 plt.show()
