@@ -122,7 +122,7 @@ for i in range(1,9):
         ax2.errorbar(testx,y,yerr=testvar,elinewidth=0.5,errorevery=1,ecolor='k')
         ax2.set_xlabel("%i"%i)
         plotcounter +=1
-        fig.savefig("png/pred variability degree: %i and %i"%(i-1,i))
+        fig.savefig("png/pred-variability-degree: %i and %i"%(i-1,i))
 
 # Visualize each predicted equation
 for i in range(1,9):
@@ -152,5 +152,5 @@ for i in range(1,9):
         ax.plot(px,py,'k:')
     plt.axis([-1,1,-20,20])
     plt.title("Degree of the prediction: %i"%i)
-    fig.savefig("png/w distribution degress: %i"%i)
+    fig.savefig("png/w-distribution-degress: %i"%i)
 plt.show()
