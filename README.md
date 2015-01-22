@@ -8,3 +8,5 @@
     4.The fold ml/basic is for the exercise about 'A First Course in Machine Learning'
 
     5.The fold ml/act is for the exercise about 'Action in Machine Learning with Python'
+    
+    6.The fold ml/andrewNg is for the note of Andrew Ng Machine Learning class in Stanford University
