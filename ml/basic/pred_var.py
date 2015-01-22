@@ -154,3 +154,9 @@ for i in range(1,9):
     plt.title("Degree of the prediction: %i"%i)
     fig.savefig("png/w-distribution-degress: %i"%i)
 plt.show()
+# Some Conclusion of How is the w effecting on predicted value
+# w~N(w_mu,w_sigma2)
+#   w_sigma2 represents the error between predicted value of w and the real value of w
+#   w_sigma2 and error are positive correlation
+#   error represents the level of overfitting
+#   w_mu represents the part of conclusiveness of predicted value of w
