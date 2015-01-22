@@ -160,3 +160,5 @@ plt.show()
 #   w_sigma2 and error are positive correlation
 #   error represents the level of overfitting
 #   w_mu represents the part of conclusiveness of predicted value of w
+#   And the conclusion of w above so the same thing on other variables complying Guass-Distribution
+#   w is unbiase and sigma2 is biase but small
