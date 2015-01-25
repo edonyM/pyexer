@@ -26,7 +26,7 @@
 
 * Properties of [Covariance Matrix](http://en.wikipedia.org/wiki/Covariance_matrix)
         1. cov is DXD matrix and D equals the colums of X.
-        2. cov is real symmetric matrix and it can be orthogonally diagonalizable.
+        2. cov is real symmetric matrix and it can be orthogonally diagonalizable.<br>
         `there is a upper triangular matrix U and diagonal matrix V and U.T*V*U = cov`<br>
         ` => U.T*(V**0.5)*(V**0.5)*U = cov`<br>
         ` => (((V**0.5)*U).T*((V**0.5)*U)) = cov`<br>
