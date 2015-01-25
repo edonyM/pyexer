@@ -2,10 +2,10 @@
 
 For I am familiar with MATLAB script, I prefer to do some comparision.<br>
 
-#### 1. In MATLAB, there is no remarkable difference between vector and matrix.But in numpy they are definitly different.(`np.array` for vector and `np.matrix` for matrix)
+##### 1. In MATLAB, there is no remarkable difference between vector and matrix.But in numpy they are definitly different.(`np.array` for vector and `np.matrix` for matrix)
 ----
 
-#### 2. Vector and matrix some basic operation:
+##### 2. Vector and matrix some basic operation:
 ----
 * `a.flatten()` transpose a into one-dimension array(`a.ravel()`)
 * `a.reshape()` reshape the array
@@ -17,7 +17,7 @@ For I am familiar with MATLAB script, I prefer to do some comparision.<br>
 * add element into an array(`np.append`,`np.insert`)
 * delete element in array(`np.delete`)
 
-#### 3. Plot figure with matplotlib packages(`import matplotlib as mpl`)
+##### 3. Plot figure with matplotlib packages(`import matplotlib as mpl`)
 ----
 * plot figure with matplotlib `import matplotlib.pyplot as plt`
 * plot 2-D figure use `plt.plot()`
