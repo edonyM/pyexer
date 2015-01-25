@@ -10,7 +10,7 @@
                             = E(xy)-2E(x)E(y)+E(E(x)E(y))
                             = E(xy)-E(x)E(y)
 
-* P.S. *<br>
+* P.S. <br>
 `x,y now is vector. For better calculating of Gauss-Dis, tranpose x,y into Matrix X,Y`<br>
 `covariance represent the correlation between two variables.`<br>
 > if the covariance is positive and larger, it means that these variables are positive correlation.
@@ -20,12 +20,12 @@
 * The Definition of Covariance Matrix cov
         cov = E((X-E(Y)).T*(X-E(Y)))
 
-* P.S. *<br>
+* P.S. <br>
 `协方差矩阵计算的是不同维度之间的协方差，而不是不同样本之间的。`
 `计算协方差需要计算均值，那是按行计算均值还是按列呢，我一开始就老是困扰这个问题。前面我们也特别强调了，协方差矩阵是计算不同维度间的协方差，要时刻牢记这一点。样本矩阵的每行是一个样本，每列为一个维度，所以我们要按列计算均值。`
 
-* Properties of [Covariance Matrix](http://en.wikipedia.org/wiki/Covariance_matrix)
-        1. cov is DXD matrix and D equals the colums of X.
+* Properties of [Covariance Matrix](http://en.wikipedia.org/wiki/Covariance_matrix)<br>
+        1. cov is DXD matrix and D equals the colums of X.<br>
         2. cov is real symmetric matrix and it can be orthogonally diagonalizable.<br>
         `there is a upper triangular matrix U and diagonal matrix V and U.T*V*U = cov`<br>
         ` => U.T*(V**0.5)*(V**0.5)*U = cov`<br>
