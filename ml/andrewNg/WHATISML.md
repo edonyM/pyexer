@@ -5,4 +5,4 @@
 --(T)-->E---->P<br>
         ^     |<br>
         |     .<br>
- better E'<----<br>
+(better)E'<----<br>
