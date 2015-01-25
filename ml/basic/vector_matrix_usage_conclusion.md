@@ -3,6 +3,7 @@
 For I am familiar with MATLAB script, I prefer to do some comparision.<br>
 
 1. In MATLAB, there is no remarkable difference between vector and matrix.But in numpy they are definitly different.(`np.array` for vector and `np.matrix` for matrix)
+----
 
 2. Vector and matrix some basic operation:
 ----
