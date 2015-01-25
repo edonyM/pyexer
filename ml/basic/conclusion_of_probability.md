@@ -24,13 +24,13 @@
 `协方差矩阵计算的是不同维度之间的协方差，而不是不同样本之间的。`
 `计算协方差需要计算均值，那是按行计算均值还是按列呢，我一开始就老是困扰这个问题。前面我们也特别强调了，协方差矩阵是计算不同维度间的协方差，要时刻牢记这一点。样本矩阵的每行是一个样本，每列为一个维度，所以我们要按列计算均值。`
 
-* Properties of [Covariance Matrix]=(http://en.wikipedia.org/wiki/Covariance_matrix)
+* Properties of [Covariance Matrix](http://en.wikipedia.org/wiki/Covariance_matrix)
         1. cov is DXD matrix and D equals the colums of X.
         2. cov is real symmetric matrix and it can be orthogonally diagonalizable.
-        `there is a upper triangular matrix U and diagonal matrix V and U.T*V*U = cov`
-        ` => U.T*(V**0.5)*(V**0.5)*U = cov`
-        ` => (((V**0.5)*U).T*((V**0.5)*U)) = cov`
-        ` => C.T*C = cov (C = (V**0.5)*U)`
-        ` Cholesky Decomposition can get matrix C from cov`
+        `there is a upper triangular matrix U and diagonal matrix V and U.T*V*U = cov`<br>
+        ` => U.T*(V**0.5)*(V**0.5)*U = cov`<br>
+        ` => (((V**0.5)*U).T*((V**0.5)*U)) = cov`<br>
+        ` => C.T*C = cov (C = (V**0.5)*U)`<br>
+        ` Cholesky Decomposition can get matrix C from cov`<br>
 
 
