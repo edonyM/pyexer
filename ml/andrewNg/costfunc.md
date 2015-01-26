@@ -13,4 +13,4 @@ theta(i) = theta(i)-alpha*(derivative(J) with theta(i))<br>
 Personally, this algorithm has some drawbacks for it gets locally optimal solution. And for linear problem the cost function is convex function, there is no need to worry about this.
 
 3. Generalize Gradient Descent Algorithm
-Linear Algebra Review
+Linear Algebra Review(Matrix and Vector)
