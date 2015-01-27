@@ -30,5 +30,5 @@ Normal equation: Method to solve for theta analytically.<br>
 * Derivate the Matrix eqaution of theta and get the minimize cost function theta.
 * There is no need to care about the scale of features.
 * This algrithms is alternative for the numbers of features is not too large(normally,not large than 1000, well that depends on the fact and enviroment).<br>
-For more comparision, take a look the following picture:<br>
+* For more comparision, take a look the following picture:<br>
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/comparedtwoalg.PNG)
