@@ -119,7 +119,37 @@ theta = np.zeros((2,1))
 iteration = 1500
 alpha = 0.01
 
+# compute and display initial cost
 from computeCost import computeCost as compC
 x = np.matrix(x.T)
 y = np.matrix(np.array([y])).T
-compC(x,y,theta)
+print compC(x,y,theta)
+# compute and display initial cost
+from gradientDescent import gradientDescent
+theta = gradientDescent(x,y,theta,alpha,iteration)
+print theta
+# Predict values for population sizes of 35,000 and 70,000
+prex1 = 35000
+prex2 = 70000
+print('For population = 35,000, we predict a profit of %f\n'%([1,prex1]*theta)[0,0])
+print('For population = 70,000, we predict a profit of %f\n'%([1,prex2]*theta)[0,0])
+raw_input('Program paused. Press enter to continue.\n');
+
+## ============= Part 4: Visualizing J(theta_0, theta_1) =============
+print('Visualizing J(theta_0, theta_1) ...\n')
+theta_0 = np.array([np.linspace(-10,10,num=100)])
+theta_1 = np.array([np.linspace(-1,4,num=100)])
+J_theta = np.array(np.empty((100,100)))
+for i in range(100):
+    for j in range(100):
+        J_theta[i,j] = compC(x,y,[[theta_0[0,i]],[theta_1[0,j]]])
+from plotData import plot3d
+plot3d(theta_0,theta_1,J_theta)
+#f = open('test.bat','w')
+#for i in range(100):
+#    for j in range(100):
+#        f.write('%f '%J_theta[i,j])
+#    f.write('\n')
+#f.close()
+from plotData import plotcontour as cont
+cont(theta_0.T,theta_1.T,J_theta,theta)

@@ -66,5 +66,5 @@ from scipy import stats as st
 def computeCost(x,y,theta):
     m = y.shape[0]
     J = (1.0/(2*m))*(((x*theta - y).T*(x*theta - y))[0,0])
-    print J
+    #print J
     return J

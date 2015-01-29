@@ -16,9 +16,9 @@
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified: 2015-01-29 16:21
+ # Last modified: 2015-01-29 18:57
  # 
- # Filename: plotData.py
+ # Filename: gradientDescent.py
  # 
  # Description: All Rights Are Reserved                 
 class pcolor:
@@ -62,35 +62,14 @@ import scipy as sp
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
-from matplotlib import cm
  
-def plotData(x,y):
-    x = np.array(x.flatten())
-    y = np.array(y.flatten())
-    x = x.reshape(x.size)
-    y = y.reshape(y.size)
-    fig = plt.figure(1)
-    plt.plot(x,y,'rx',ms=4)
-    plt.show()
-
-def plot3d(x,y,J):
-    x = np.array(x.flatten())
-    y = np.array(y.flatten())
-    x = x.reshape(x.size)
-    y = y.reshape(y.size)
-    fig = plt.figure(2)
-    ax = Ax3(fig)
-    ax.plot_surface(x,y,J,rstride=5,cstride=5,color='r')
-    plt.show()
-
-def plotcontour(x,y,J,theta):
-    x = np.array(x.flatten())
-    y = np.array(y.flatten())
-    x = x.reshape(x.size)
-    y = y.reshape(y.size)
-    fig = plt.figure(3)
-    plt.contour(x,y,J)
-    xp = np.array(theta[0,0])
-    yp = np.array(theta[1,0])
-    plt.plot(xp,yp,'rx',ms=8)
-    plt.show()
+def gradientDescent(x,y,theta,alpha,iterations):
+    from computeCost import computeCost as compC
+    from plotData import plotData as plot
+    m = x.shape[0]
+    J = np.array(np.empty(iterations))
+    for i in range(iterations):
+        theta = theta - alpha*(1.0/m)*(x.T*(x*theta - y))
+        J[i] = compC(x,y,theta)
+    plot(np.arange(iterations),J)
+    return theta
