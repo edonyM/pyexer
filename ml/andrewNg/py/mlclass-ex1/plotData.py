@@ -74,13 +74,13 @@ def plotData(x,y):
     plt.show()
 
 def plot3d(x,y,J):
-    x = np.array(x.flatten())
-    y = np.array(y.flatten())
-    x = x.reshape(x.size)
-    y = y.reshape(y.size)
+#    x = np.array(x.flatten())
+#    y = np.array(y.flatten())
+#    x = x.reshape(x.size)
+#    y = y.reshape(y.size)
     fig = plt.figure(2)
     ax = Ax3(fig)
-    ax.plot_surface(x,y,J,rstride=5,cstride=5,color='r')
+    ax.plot_surface(x,y,J,rstride=5,cstride=5,cmap=cm.summer_r)
     plt.show()
 
 def plotcontour(x,y,J,theta):
