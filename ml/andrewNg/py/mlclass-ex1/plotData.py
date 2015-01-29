@@ -60,7 +60,7 @@ class pcolor:
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D as Ax3
+from mpl_toolkits.mplot3d.axes3d import Axes3D as Ax3
 from scipy import stats as st
 from matplotlib import cm
  
