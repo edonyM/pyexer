@@ -67,3 +67,65 @@ from scipy import stats as st
 from matplotlib import cm
  
 
+## Machine Learning Online Class
+#  Exercise 1: Linear regression with multiple variables
+#
+#  Instructions
+#  ------------
+# 
+#  This file contains code that helps you get started on the
+#  linear regression exercise. 
+#
+#  You will need to complete the following functions in this 
+#  exericse:
+#
+#     warmUpExercise.m
+#     plotData.m
+#     gradientDescent.m
+#     computeCost.m
+#     gradientDescentMulti.m
+#     computeCostMulti.m
+#     featureNormalize.m
+#     normalEqn.m
+#
+#  For this part of the exercise, you will need to change some
+#  parts of the code below for various experiments (e.g., changing
+#  learning rates).
+#
+
+## Initialization
+## ================ Part 1: Feature Normalization ================
+## Clear and Close Figures
+
+print('Loading data ...\n');
+
+## Load Data
+f = open('ex1data2.txt')
+X1 = np.array([])
+X2 = np.array([])
+y = np.array([])
+iter = 0
+for tmp in f.readlines():
+    tmp = tmp.split(',')
+    X1 = np.append(X1,float(tmp[0].split()[0]))
+    X2 = np.append(X2,float(tmp[1].split()[0]))
+    y = np.append(y,float(tmp[2].split()[0]))
+X1 = np.concatenate(([X1],[X2]),axis=0)
+X = X1.T
+m = y.shape[0]
+# Print out some data points
+print('First 10 examples from the dataset: \n');
+for i in range(10):
+    print(' x = [%.0f %.0f], y = %.0f \n'% (X[i,0],X[i,1],y[i]));
+
+raw_input('Program paused. Press enter to continue.\n');
+
+# Scale features and set them to zero mean
+print('Normalizing Features ...\n');
+from featureNormalize import featureNormalize
+[X,mu,sigma] = featureNormalize(X);
+
+# Add intercept term to X
+tmp = np.array(np.ones((m, 1)));
+tmp = np.concatenate((tmp,X),axis=1);
+X = tmp;
