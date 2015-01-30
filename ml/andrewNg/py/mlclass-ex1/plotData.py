@@ -60,6 +60,7 @@ class pcolor:
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from mpl_toolkits.mplot3d.axes3d import Axes3D as Ax3
 from scipy import stats as st
 from matplotlib import cm
@@ -81,6 +82,19 @@ def plot3d(x,y,J):
     fig = plt.figure(2)
     ax = Ax3(fig)
     ax.plot_surface(x,y,J,rstride=5,cstride=5,cmap=cm.summer_r)
+    plt.show()
+
+def nplot3d(x,y,J):
+    '''This is a update for Mac plotting's
+    Featurewarning!
+    '''
+    mpl.rcParams['legend.fontsize'] = 10
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    ax.plot_surface(x,y,J,label='new 3d plot',rstride=5,cstride=5,cmap=cm.summer)
+    ax.set_xlabel('theta0')
+    ax.set_ylabel('theta1')
+    ax.set_zlabel('J')
     plt.show()
 
 def plotcontour(x,y,J,theta):

@@ -143,11 +143,11 @@ J_theta = np.array(np.empty((100,100)))
 for i in range(100):
     for j in range(100):
         J_theta[i,j] = compC(x,y,[[theta_0[0,i]],[theta_1[0,j]]])
-from plotData import plot3d
+from plotData import nplot3d
 print theta_0.shape
 print theta_1.shape
 print J_theta.shape
-plot3d(theta_0,theta_1.T,J_theta)
+nplot3d(theta_0,theta_1.T,J_theta)
 #f = open('test.bat','w')
 #for i in range(100):
 #    for j in range(100):
