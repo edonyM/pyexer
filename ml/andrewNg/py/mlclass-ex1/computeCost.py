@@ -68,3 +68,24 @@ def computeCost(x,y,theta):
     J = (1.0/(2*m))*(((x*theta - y).T*(x*theta - y))[0,0])
     #print J
     return J
+
+def computeCostMulti(x,y,theta):
+    #COMPUTECOSTMULTI Compute cost for linear regression with multiple variables
+    #   J = COMPUTECOSTMULTI(X, y, theta) computes the cost of using theta as the
+    #   parameter for linear regression to fit the data points in X and y
+
+    # Initialize some useful values
+    m = y.shape[1]; # number of training examples
+
+    # You need to return the following variables correctly 
+    J = 0;
+
+    # ====================== YOUR CODE HERE ======================
+    # Instructions: Compute the cost of a particular choice of theta
+    #               You should set J to the cost.
+    x = np.matrix(x);
+    theta = np.matrix(theta);
+    y = np.matrix(y);
+    J = (1.0/(2*m))*np.sum((x*theta - y).T*(x*theta - y));
+    return J
+    # =========================================================================
