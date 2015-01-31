@@ -113,6 +113,7 @@ for tmp in f.readlines():
 X1 = np.concatenate(([X1],[X2]),axis=0)
 X = X1.T
 m = y.shape[0]
+y = y.reshape(m,1)
 # Print out some data points
 print('First 10 examples from the dataset: \n');
 for i in range(10):
@@ -172,28 +173,27 @@ plt.ylabel('Cost J');
 plt.show();
 
 # Display gradient descent's result
-#fprintf('Theta computed from gradient descent: \n');
-#fprintf(' %f \n', theta);
-#fprintf('\n');
+print('Theta computed from gradient descent: \n');
+print('[%f, %f, %f] \n'%(theta[0,0],theta[1,0],theta[2,0]));
+print('\n');
 
 # Estimate the price of a 1650 sq-ft, 3 br house
 # ====================== YOUR CODE HERE ======================
 # Recall that the first column of X is all-ones. Thus, it does
 # not need to be normalized.
-#price = transpose(theta)*[1; (1650-mu(1))/sigma(1); (3-mu(2))/sigma(2)]; % You should change this
+tmpx = np.array([[1],[(1650-mu[0])/sigma[0]],[(3-mu[1])/sigma[1]]]);
+price = theta.T*np.matrix(tmpx); # You should change this
 
 
 # ============================================================
 
-#fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
-#         '(using gradient descent):\n $%f\n'], price);
+print('Predicted price of a 1650 sq-ft, 3 br house (using gradient descent):\n $%f\n'%price[0,0]);
 
-#fprintf('Program paused. Press enter to continue.\n');
-#pause;
+raw_input('Program paused. Press enter to continue.\n');
 
 ## ================ Part 3: Normal Equations ================
 
-#fprintf('Solving with normal equations...\n');
+print('Solving with normal equations...\n');
 
 # ====================== YOUR CODE HERE ======================
 # Instructions: The following code computes the closed form 
@@ -205,32 +205,44 @@ plt.show();
 #               to predict the price of a 1650 sq-ft, 3 br house.
 #
 
-#% Load Data
-#data = csvread('ex1data2.txt');
-#X = data(:, 1:2);
-#y = data(:, 3);
-#m = length(y);
-
-# Add intercept term to X
-#X = [ones(m, 1) X];
+# Load Data
+f = open('ex1data2.txt')
+X1 = np.array([])
+X2 = np.array([])
+y = np.array([])
+iter = 0
+for tmp in f.readlines():
+    tmp = tmp.split(',')
+    X1 = np.append(X1,float(tmp[0].split()[0]))
+    X2 = np.append(X2,float(tmp[1].split()[0]))
+    y = np.append(y,float(tmp[2].split()[0]))
+X1 = np.concatenate(([X1],[X2]),axis=0)
+X = X1.T
+m = y.shape[0]
+y = y.reshape(m,1)
+tmp = np.array(np.ones((m, 1)));
+tmp = np.concatenate((tmp,X),axis=1);
+X = tmp;
 
 # Calculate the parameters from the normal equation
-#theta = normalEqn(X, y);
+X = np.matrix(X)
+y = np.matrix(y)
+from normalEqn import normalEqn
+theta = normalEqn(X, y);
 
 # Display normal equation's result
-#fprintf('Theta computed from the normal equations: \n');
-#fprintf(' %f \n', theta);
-#fprintf('\n');
+print('Theta computed from the normal equations: \n');
+print theta;
+print('\n');
 
 
 # Estimate the price of a 1650 sq-ft, 3 br house
 # ====================== YOUR CODE HERE ======================
-#tmpx = [1;1650;3];
-#price = transpose(theta)*tmpx; % You should change this
+tmpx = [[1],[1650],[3]];
+price = theta.T*tmpx; # You should change this
 
 
 # ============================================================
 
-#fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
-#         '(using normal equations):\n $%f\n'], price);
+print('Predicted price of a 1650 sq-ft, 3 br house(using normal equations):\n $%f\n'%price[0,0]);
 

@@ -98,9 +98,9 @@ def featureNormalize(X):
     for i in range(counter):
         for j in range(X.shape[0]):
             X_norm[j,i] = X[j,i] - mu[i];
-    sigma = np.std(X_norm);
+    sigma = np.std(X_norm,axis=0);
     for i in range(counter):
         for j in range(X.shape[0]):
-            X_norm[j,i] = X_norm[j,i]/sigma;
+            X_norm[j,i] = X_norm[j,i]/sigma[i];
     # ============================================================
     return [X_norm,mu,sigma]
