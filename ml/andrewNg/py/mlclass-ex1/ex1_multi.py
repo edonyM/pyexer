@@ -240,8 +240,6 @@ print('\n');
 # ====================== YOUR CODE HERE ======================
 tmpx = [[1],[1650],[3]];
 price = theta.T*tmpx; # You should change this
-
-
 # ============================================================
 
 print('Predicted price of a 1650 sq-ft, 3 br house(using normal equations):\n $%f\n'%price[0,0]);
