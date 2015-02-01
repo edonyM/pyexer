@@ -73,14 +73,14 @@ from scipy import stats as st
 #  linear exercise. You will need to complete the following functions 
 #  in this exericse:
 #
-#     warmUpExercise.m
-#     plotData.m
-#     gradientDescent.m
-#     computeCost.m
-#     gradientDescentMulti.m
-#     computeCostMulti.m
-#     featureNormalize.m
-#     normalEqn.m
+#     warmUpExercise.py
+#     plotData.py
+#     gradientDescent.py
+#     computeCost.py
+#     gradientDescentMulti.py
+#     computeCostMulti.py
+#     featureNormalize.py
+#     normalEqn.py
 #
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.

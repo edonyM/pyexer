@@ -79,14 +79,14 @@ from matplotlib import cm
 #  You will need to complete the following functions in this 
 #  exericse:
 #
-#     warmUpExercise.m
-#     plotData.m
-#     gradientDescent.m
-#     computeCost.m
-#     gradientDescentMulti.m
-#     computeCostMulti.m
-#     featureNormalize.m
-#     normalEqn.m
+#     warmUpExercise.py
+#     plotData.py
+#     gradientDescent.py
+#     computeCost.py
+#     gradientDescentMulti.py
+#     computeCostMulti.py
+#     featureNormalize.py
+#     normalEqn.py
 #
 #  For this part of the exercise, you will need to change some
 #  parts of the code below for various experiments (e.g., changing
