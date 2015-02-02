@@ -10,3 +10,7 @@ This schedule is PDT and I am CST. `PDT-CST=-15h`
 * Linear Regression with One Variable
 * Linear Algebra Review(Optional)
 * Review Questions(for the week's topics) in Sunday,Februray 8 PDT
+
+2. Week 2
+* Linear Regression wiht Multiple Variables
+* Octave Tutorial
