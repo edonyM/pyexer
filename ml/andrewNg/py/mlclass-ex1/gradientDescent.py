@@ -65,13 +65,13 @@ from scipy import stats as st
  
 def gradientDescent(x,y,theta,alpha,iterations):
     from computeCost import computeCost as compC
-    from plotData import plotData as plot
+    from plotData import plotContData as plotc
     m = x.shape[0]
     J = np.array(np.empty(iterations))
     for i in range(iterations):
         theta = theta - alpha*(1.0/m)*(x.T*(x*theta - y))
         J[i] = compC(x,y,theta)
-    plot(np.arange(iterations),J)
+    plotc(np.arange(iterations),J)
     return theta
 
 def gradientDescentMulti(x, y, theta, alpha, num_iters):

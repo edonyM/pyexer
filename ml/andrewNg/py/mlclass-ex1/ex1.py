@@ -1,5 +1,5 @@
- #!/usr/bin/python
- #encoding: utf-8
+#! /usr/bin/python
+#encoding: utf-8
  #        .---.         .-----------  
  #       /     \  __  /    ------    
  #      / /     \(  )/    -----   (`-')  _ _(`-')              <-. (`-')_            
@@ -16,7 +16,7 @@
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified: 2015-01-29 15:39
+ # Last modified: 2015-02-07 21:13
  # 
  # Filename: ex1.py
  # 
@@ -51,7 +51,8 @@ class pcolor:
     \033[1;31;40m   <!--1-高亮显示 31-前景色红色  40-背景色黑色-->
     \033[0m         <!--采用终端默认设置，即取消颜色设置-->
     '''
-    WARNING = '\033[0;37;41m'
+    WARN = '\033[0;37;41m'
+    NOTE = '\033[4;32m'
     ENDC = '\033[0m'
     def disable(self):
         self.ENDC = ''
@@ -59,10 +60,13 @@ class pcolor:
  
 import numpy as np
 import scipy as sp
+import math as m
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
- 
+from matplotlib import cm
+
 
 ## Machine Learning Online Class - Exercise 1: Linear Regression
 
@@ -91,11 +95,11 @@ from scipy import stats as st
 
 ## ==================== Part 1: Basic Function ====================
 from warmUpExercise import warmUpExercise
-print "Runing warmUpExercise.py..."
-print "5x5 Indentity Matrix:"
+print pcolor.WARN+"Runing warmUpExercise.py..."+pcolor.ENDC
+print pcolor.NOTE+"5x5 Indentity Matrix:"+pcolor.ENDC
 
 warmUpExercise()
-raw_input("Program paused.Press enter key to continue...")
+raw_input(pcolor.WARN+"Program paused.Press enter key to continue..."+pcolor.ENDC)
 
 ## ======================= Part 2: Plotting =======================
 print "Plotting Data..."
@@ -106,8 +110,8 @@ for tmp in f.readlines():
     tmp = tmp.split(',')
     X = np.append(X,float(tmp[0].split()[0]))
     y = np.append(y,float(tmp[1].split()[0]))
-from plotData import plotData as plot
-plot(X,y)
+from plotData import plotDisData as plotd
+plotd(X,y)
 raw_input("Program paused.Press enter key to continue...")
 
 ## =================== Part 3: Gradient descent ===================

@@ -65,13 +65,22 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D as Ax3
 from scipy import stats as st
 from matplotlib import cm
  
-def plotData(x,y):
+def plotDisData(x,y):
     x = np.array(x.flatten())
     y = np.array(y.flatten())
     x = x.reshape(x.size)
     y = y.reshape(y.size)
     fig = plt.figure(1)
-    plt.plot(x,y,'rx',ms=4)
+    plt.plot(x,y,'r^',ms=4)
+    plt.show()
+
+def plotContData(x,y):
+    x = np.array(x.flatten())
+    y = np.array(y.flatten())
+    x = x.reshape(x.size)
+    y = y.reshape(y.size)
+    fig = plt.figure(1)
+    plt.plot(x,y,'r-',ms=4)
     plt.show()
 
 def plot3d(x,y,J):
