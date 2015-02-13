@@ -4,7 +4,8 @@
 
 1. Attributes of Classification Problem
 
-2. Sigmod Function of Classification Problem
+2. Sigmod Function of Classification Problem<br>
+![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/sigmodfunction.png)
 
 3. Decision boundary of Hypothesis Function(the relation between the decision boundary and the parameter of model)
 
