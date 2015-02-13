@@ -9,4 +9,5 @@
 
 3. Decision boundary of Hypothesis Function(the relation between the decision boundary and the parameter of model)
 
-4. Cost Function for Fitting the parameter theta.(Convex function analysis for a cost function for classification problem)
+4. Cost Function for Fitting the parameter theta.(Convex function analysis for a cost function for classification problem)<br>
+![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/LinearCostFunction2Classification.png)<br>
