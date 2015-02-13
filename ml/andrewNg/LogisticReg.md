@@ -11,3 +11,5 @@
 
 4. Cost Function for Fitting the parameter theta.(Convex function analysis for a cost function for classification problem)<br>
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/LinearCostFunction2Classification.png)<br>
+![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/logisticregressioncostfunc1.png)<br>
+![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/logisticregressioncostfunc2.png)
