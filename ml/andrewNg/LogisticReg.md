@@ -9,7 +9,10 @@
 
 3. Decision boundary of Hypothesis Function(the relation between the decision boundary and the parameter of model)
 
-4. Cost Function for Fitting the parameter theta.(Convex function analysis for a cost function for classification problem)<br>
+4. Cost Function J(theta) for Fitting the parameter theta.(Convex function analysis for a cost function for classification problem)<br>
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/LinearCostFunction2Classification.png)<br>
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/logisticregressioncostfunc1.png)<br>
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/logisticregressioncostfunc2.png)
+
+5. Calculate the theta to get the minimize J(theta) with gradient descent algorithm.
+![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/derivativeofcostfunc.JPG)
