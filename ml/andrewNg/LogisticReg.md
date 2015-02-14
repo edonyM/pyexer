@@ -16,3 +16,11 @@
 
 5. Calculate the theta to get the minimize J(theta) with gradient descent algorithm.
 ![](https://github.com/edonyM/pyexer/blob/master/ml/andrewNg/pic/derivativeofcostfunc.JPG)
+
+6. Advanced Optimization Algorithm For Non-linear Optimization Problems.
+ > Grandient Descent Alg<br>
+ > Conjugate Gradient Alg<br>
+ > BFGS(Broyden–Fletcher–Goldfarb–Shanno) Alg<br>
+ > L-BFGS(Limited-memory BFGS) Alg<br>
+ `There are lots of program libraries for these algorithms, if you are major in Numeric Computing, you can code it youself`<br>
+
