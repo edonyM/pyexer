@@ -23,8 +23,6 @@ tmp = X * theta;
 tmp = -1 * tmp;
 h = 1.0/(1 + exp(tmp));
 h = transpose(h);
-tmplog = log(h);
-fprintf('logh %d,%d',size(tmplog)(1),size(tmplog)(2));
 ONE = ones(size(y));
 J = (1.0/m) * (y .* log(h) + (ONE - y) .* log(ONE - h));
 grad = (1.0/m) * transpose(X) * (h - y);
