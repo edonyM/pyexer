@@ -24,3 +24,7 @@
  > L-BFGS(Limited-memory BFGS) Alg<br>
  `There are lots of program libraries for these algorithms, if you are major in Numeric Computing, you can code it youself`<br>
 
+7. Over-fitting: If we have too many features, the learned hypothesis may fit the training set very well(cost function almost equals zero), but fail to generalize to new examples (predict prices on new examples).
+ > There are two options to solve over-fitting.
+ >> 1. Reduce number of features.
+ >> 2. Regularization.
