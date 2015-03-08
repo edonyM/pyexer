@@ -20,13 +20,11 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 tmp = X * theta;
-tmp = -1 * tmp;
-h = 1.0/(1 + exp(tmp));
-h = transpose(h);
+tmp = -1 .* tmp;
+h = 1.0./(1 .+ exp(tmp));
 ONE = ones(size(y));
-J = (1.0/m) * (y .* log(h) + (ONE - y) .* log(ONE - h));
-grad = (1.0/m) * transpose(X) * (h - y);
-
+J = (-1.0) .* (y .* log(h) + (ONE .- y) .* log(ONE .- h));
+grad = (1.0/m) .* transpose(X) * (h - y);
 % =============================================================
 
 end

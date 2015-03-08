@@ -12,6 +12,8 @@ g = zeros(size(z));
 for i=1:ro
     for j=1:col
         g(i,j) = 1.0/(1+exp(-z(i,j)));
+    endfor
+endfor
 % =============================================================
 
 end
