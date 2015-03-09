@@ -39,7 +39,7 @@ tmp = X * theta;
 h = sigmoid(tmp);
 theta_tmp = theta;
 theta_tmp(1) = 0;
-J = (-1/m) * sum(y .* log(h) - (ones(size(y)) - y) .* log(ones(size(y)) - h)) + (lambda/(2*m))*sum(theta_tmp.^2);
+J = (-1/m) * sum(y .* log(h) + (ones(size(y)) - y) .* log(ones(size(y)) - h)) + (lambda/(2*m))*sum(theta_tmp.^2);
 grad = (1/m) .* transpose(X) * (h - y);
 grad = grad + (lambda/m) .* theta_tmp
 % =============================================================
