@@ -29,12 +29,14 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
-for i = 1:num_labels
-
-
-
-
-
+for i = 1:10
+    [probility, ind] = max(all_theta * transpose(X(i,:)), [], 1);
+    if ind == 1
+        p(i,1) = 0;
+    else
+        p(i,1) = ind - 1;
+    endif
+endfor
 
 % =========================================================================
 
