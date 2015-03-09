@@ -56,8 +56,8 @@ for c = 1:num_labels
         all_theta(1,:) = theta;
     else
         all_theta(c,:) = theta;
-    endif
-endfor
+    end
+end
 
 % =========================================================================
 
