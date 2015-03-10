@@ -31,12 +31,12 @@ X = [ones(m, 1) X];
 %       
 for i = 1:m
     [probility, ind] = max(X(i,:) * transpose(all_theta), [], 2);
-    if i == 1
-        p(i, 1) = 10;
-    else
-        p(i, 1) = ind - 1;
-    end
+    %if ind == 10
+    %    p(i, 1) = 10;
+    %else
+    %    p(i, 1) = ind - 1;
+    %end
+    p(i, 1) = ind;
 end
-
 % =========================================================================
 end
