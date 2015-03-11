@@ -77,9 +77,7 @@ for i=1:m
        end
     end
 end
-J = (-1/m) * sum(sum(y_tmp .* log(h) + (ones(size(y_tmp)) .- y_tmp).*log(ones(size(h)).-h)));
-Theta1_grad = (1/m) .* transpose(X) * (sigmoid(z2) .- y);
-Theta2_grad = (1/m) .* transpose(a2) * (h .- y);
+J = (-1/m) * sum(sum(y_tmp .* log(h) + (ones(size(y_tmp)) - y_tmp).*log(ones(size(h))-h)));
 Theta1_tmp = Theta1;
 Theta1_tmp(:,1) = 0;
 Theta2_tmp = Theta2;
@@ -87,9 +85,31 @@ Theta2_tmp(:,1) = 0;
 J_R = lambda/(2*m) * (sum(sum(Theta1_tmp.^2)) + sum(sum(Theta2_tmp.^2)));
 J = J + J_R;
 % -------------------------------------------------------------
-
+for t=1:m
+    z2_t = X(t,:) * transpose(Theta1);%1X401 401X25
+    a2_t = sigmoid(z2_t);%1X25
+    a2_t = [1 a2_t];%1X26
+    z3_t = a2_t * transpose(Theta2);%1X26 T(10X26)
+    a3_t = sigmoid(z3_t);%1X10
+    delta3 = a3_t .- y_tmp(t,:);%1X10
+    delta2 = delta3 * Theta2 .* sigmoidGradient([1 z2_t]);%10X1 10X26 1X26
+    delta2 = delta2(2:end);%1X25
+    Theta2_grad= Theta2_grad + transpose(delta3) * a2_t;%1X10 1X26
+    Theta1_grad= Theta1_grad + transpose(delta2) * X(t,:);%1X401 1X25
+end
+Theta2_grad = (1/m) .* Theta2_grad;
+Theta1_grad = (1/m) .* Theta1_grad;
 % =========================================================================
-
+for i=1:size(Theta2_grad,1)
+    for j=2:size(Theta2_grad,2)
+        Theta2_grad(i,j) = Theta2_grad(i,j) + (lambda/m)*Theta2(i,j);
+    end
+end
+for i=1:size(Theta1_grad,1)
+    for j=2:size(Theta1_grad,2)
+        Theta1_grad(i,j) = Theta1_grad(i,j) + (lambda/m)*Theta1(i,j);
+    end
+end
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
