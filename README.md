@@ -10,3 +10,7 @@
     5.The fold ml/act is for the exercise about 'Action in Machine Learning with Python'
     
     6.The fold ml/andrewNg is for the note of Andrew Ng Machine Learning class in Stanford University
+    
+    7.The fold ml/andrewNg/octave if script of octave for exercise of the class
+    
+    8.The fold ml/andrewNg/python is script with python for exercise of the class
