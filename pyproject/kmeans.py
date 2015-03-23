@@ -81,20 +81,30 @@ import ReadCPInTxt as r
 #plt.plot(tmp[0][:,0],tmp[0][:,1],'^g')
 #plt.show()
 
-path = raw_input('File Name: ')
-X = r.ReadCPInTxt(path)
-for i in range(20):
-    results = kmeans2(X,1,iter=500,thresh=1e-10)
-tmp = results[0]
-print tmp[0,0]
-print tmp[0,1]
-print tmp[0,2]
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-px = np.array([X[:,0]])
-py = np.array([X[:,1]])
-pz = np.array([X[:,2]])
-print px.shape
-ax.scatter(px,py,pz,c='r',marker='+')
-ax.scatter(tmp[0,0],tmp[0,1],tmp[0,2],s=200,c='g',marker='^')
-plt.show()
+def classifier():
+    # ------ Read in the CP file
+    path = raw_input('File Name: ')
+    X = r.ReadCPInTxt(path)
+    
+    # ------ Cluster the CP
+    for i in range(20):
+        results = kmeans2(X,1,iter=500,thresh=1e-10)
+    tmp = results[0]
+    print tmp
+    # ------ Visualization the clustering
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    px = np.array([X[:,0]])
+    py = np.array([X[:,1]])
+    pz = np.array([X[:,2]])
+    ax.scatter(px,py,pz,c='r',marker='+')
+    ax.scatter(tmp[:,0],tmp[:,1],tmp[:,2],s=200,c='g',marker='^')
+
+    # ------ Find the closest CP with centroid
+    obs = whiten(X)
+    features_array = vq(obs,tmp)
+
+    # ------ Plot
+    plt.show()
+
+    return [features_array,tmp]
