@@ -85,6 +85,7 @@ def ReadCPInTxt(path):
         line_tmp = np.array(str2float(line.split()))
         tmp = np.concatenate((tmp,[line_tmp]),axis=0)
     return tmp
+    file.close()
 
 def str2float(x):
     '''
