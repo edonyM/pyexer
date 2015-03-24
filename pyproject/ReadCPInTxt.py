@@ -67,6 +67,14 @@ from scipy import stats as st
 from matplotlib import cm
  
 def ReadCPInTxt(path):
+    '''
+    Read Cloud Points file(*.txt) into a matrix named 'tmp'.
+    The CP file each row is a point and the first colum is X coordinate,
+    the second colum is Y coordinate and the third colum is Z coordinate.
+    FUNCTION READCPINTXT(PATH)'s parameter is the direction of the file(include the name)
+    and it returns the matrix of all the Cloud Points.
+    '''
+    print 'reading txt...'
     file = open(path)
     tmp = file.readline().split()
     tmp = np.array(str2float(tmp))
@@ -79,6 +87,9 @@ def ReadCPInTxt(path):
     return tmp
 
 def str2float(x):
+    '''
+    Convert the number whose type is string into the float number.
+    '''
     for i in range(len(x)):
         x[i] = float(x[i])
     return x
