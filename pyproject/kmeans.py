@@ -1,4 +1,4 @@
- #!/usr/bin/python
+ #!/usr/bin/env python
  #encoding: utf-8
  #        .---.         .-----------  
  #       /     \  __  /    ------    
@@ -70,6 +70,7 @@ from matplotlib import cm
 from scipy.cluster.vq import vq, whiten, kmeans, kmeans2
 from scipy import io
 import ReadCPInTxt as r
+import sequence as se
 
 #file = io.loadmat('/home/shared/ex7data2.mat')
 #examples = file['X']
@@ -100,12 +101,12 @@ def classifier(path):
     print 'the center of the clustering sets...'
     print tmp
     # ------ Visualization the clustering
-    fig = plt.figure()
+    fig = plt.figure(1)
     ax = fig.gca(projection='3d')
     px = np.array([X[:,0]])
     py = np.array([X[:,1]])
     pz = np.array([X[:,2]])
-    ax.scatter(px,py,pz,c='r',marker='+')
+    ax.scatter(px,py,pz,c='r',marker='.')
     ax.scatter(tmp[0,0],tmp[0,1],tmp[0,2],s=200,c='g',marker='^')
     ax.scatter(tmp[1,0],tmp[1,1],tmp[1,2],s=200,c='y',marker='o')
     ax.scatter(tmp[2,0],tmp[2,1],tmp[2,2],s=200,c='c',marker='s')
@@ -116,6 +117,6 @@ def classifier(path):
     features_array = vq(obs,tmp)
 
     # ------ Plot
+    se.seq(features_array[0],X)
     plt.show()
-
     return [features_array,tmp]
