@@ -95,28 +95,30 @@ def classifier(path):
     X = r.ReadCPInTxt(path)
     
     # ------ Cluster the CP
-    for i in range(20):
-        results = kmeans2(X,4,iter=500,thresh=1e-10)
+    #for i in range(20):
+    results = kmeans2(X,4,iter=500,thresh=1e-10)
     tmp = results[0]
+    label = results[1]
     print 'the center of the clustering sets...'
     print tmp
     # ------ Visualization the clustering
-    fig = plt.figure(1)
-    ax = fig.gca(projection='3d')
-    px = np.array([X[:,0]])
-    py = np.array([X[:,1]])
-    pz = np.array([X[:,2]])
-    ax.scatter(px,py,pz,c='r',marker='.')
-    ax.scatter(tmp[0,0],tmp[0,1],tmp[0,2],s=200,c='g',marker='^')
-    ax.scatter(tmp[1,0],tmp[1,1],tmp[1,2],s=200,c='y',marker='o')
-    ax.scatter(tmp[2,0],tmp[2,1],tmp[2,2],s=200,c='c',marker='s')
-    ax.scatter(tmp[3,0],tmp[3,1],tmp[3,2],s=200,c='b',marker='p')
+    #fig = plt.figure(1)
+    #ax = fig.gca(projection='3d')
+    #px = np.array([X[:,0]])
+    #py = np.array([X[:,1]])
+    #pz = np.array([X[:,2]])
+    #ax.scatter(px,py,pz,c='r',marker='.')
+    #ax.scatter(tmp[0,0],tmp[0,1],tmp[0,2],s=200,c='g',marker='^')
+    #ax.scatter(tmp[1,0],tmp[1,1],tmp[1,2],s=200,c='y',marker='o')
+    #ax.scatter(tmp[2,0],tmp[2,1],tmp[2,2],s=200,c='c',marker='s')
+    #ax.scatter(tmp[3,0],tmp[3,1],tmp[3,2],s=200,c='b',marker='p')
 
     # ------ Find the closest CP with centroid
-    obs = whiten(X)
-    features_array = vq(obs,tmp)
+    #obs = whiten(X)
+    #features_array = vq(obs,tmp)
 
     # ------ Plot
-    se.seq(features_array[0],X)
-    plt.show()
-    return [features_array,tmp]
+    #se.seq(features_array[0],X)
+    se.label(label,X)
+    #plt.show()
+    return tmp

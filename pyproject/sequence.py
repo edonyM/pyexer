@@ -68,6 +68,11 @@ from matplotlib import cm
  
 
 def seq(fea_seq, X):
+    '''
+    After kmeans classify the dataset into different clusters, the origin dataset should
+    be sequenced by clusters. For the help of scipy library, VQ function can help.
+    FUNCTION SEQ(FEA_SEQ,X) take two parameters: observation and code_book from kmeans.
+    '''
     num_of_features = 0
     fea = np.zeros(4)
     for i in range(4):
@@ -98,4 +103,38 @@ def seq(fea_seq, X):
         File.write(' ')
         File.write(X[i,2])
         File.write('\n')
+    print('successful sequenced...')
+
+def label_seq(label,X):
+    '''
+    FUNCTION kmeans return two patameters:
+    ... The first one is centroids of the clustering
+    ... The second one is label of the dataset that flag the cluster
+    This function takes the label and the dataset as patameters and divide the dataset into different sets by clustering center. Write them into different files.
+    '''
+    row = np.size(X,axis=0)
+    col = np.size(X,axis=1)
+    X_seq = np.zeros((row,col))
+    counter = 0
+    label_counter = np.zeros(4)
+    for i in range(4):
+        for j in range(row):
+            if label[j]==i:
+                X_seq[counter,:] = X[j,:]
+                counter += 1
+                label_counter[i] += 1
+    print('writing file for sequence of classifier...\n......')
+    offset = 0
+    for file_num in range(4):
+        name = str(file_num)+'extraSeqPoints.txt'
+        File = open(name,'w')
+        for i in range(int(label_counter[file_num])):
+            File.write(str(X_seq[i+offset,0]))
+            File.write(' ')
+            File.write(str(X_seq[i+offset,1]))
+            File.write(' ')
+            File.write(str(X_seq[i+offset,2]))
+            File.write('\n')
+        File.close()
+        offset += int(label_counter[file_num])
     print('successful sequenced...')
