@@ -1,5 +1,5 @@
- #!/usr/bin/env python
- #encoding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
  #        .---.         .-----------  
  #       /     \  __  /    ------    
  #      / /     \(  )/    -----   (`-')  _ _(`-')              <-. (`-')_            
@@ -22,7 +22,7 @@
  # 
  # Description: All Rights Are Reserved                 
 class pcolor:
-    ''' This class is for colored print in the python interpreter!
+    u''' This class is for colored print in the python interpreter!
     "py" call Addpy() function to add this class which is defined
     in the .vimrc for vim Editor.
     
