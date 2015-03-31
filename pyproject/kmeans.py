@@ -119,6 +119,6 @@ def classifier(path):
 
     # ------ Plot
     #se.seq(features_array[0],X)
-    se.label(label,X)
+    se.label_seq(label,X)
     #plt.show()
     return tmp
