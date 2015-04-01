@@ -10,13 +10,13 @@
  # ============UU====UU====      |  .--'  |  |  / : \|  |)| | |  |\    |  |  /   /) 
  #             '//||\\`          |  `---. |  '-'  /  '  '-' ' |  | \   |  `-/   /`  
  #               ''``            `------' `------'    `-----' `--'  `--'    `--'    
- # ########################################################################################################
+ # ##########################################################################################
  # 
  # Author: edony - edonyzpc@gmail.com                 
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified: 2015-03-31 21:17
+ # Last modified: 2015-04-01 15:32
  # 
  # Filename: PyNote.py
  # 
@@ -26,30 +26,30 @@ class pcolor:
     "py" call Addpy() function to add this class which is defined
     in the .vimrc for vim Editor.
     
-    格式: \033[显示方式;前景色;背景色m
-    说明:
-    前景色            背景色           颜色
+    STYLE: \033['display model';'foreground';'background'm
+    DETAILS:
+    FOREGROUND        BACKGOUND       COLOR
     ---------------------------------------
-    30                40              黑色
-    31                41              红色
-    32                42              绿色
-    33                43              黃色
-    34                44              蓝色
-    35                45              紫红色
-    36                46              青蓝色
-    37                47              白色
-    显示方式           意义
+    30                40              black
+    31                41              red
+    32                42              green
+    33                43              yellow
+    34                44              blue
+    35                45              purple
+    36                46              cyan
+    37                47              white
+    DISPLAY MODEL    DETAILS
     -------------------------
-    0                终端默认设置
-    1                高亮显示
-    4                使用下划线
-    5                闪烁
-    7                反白显示
-    8                不可见
+    0                default
+    1                highlight
+    4                underline
+    5                flicker
+    7                reverse
+    8                non-visiable
     
-    例子：
-    \033[1;31;40m   <!--1-高亮显示 31-前景色红色  40-背景色黑色-->
-    \033[0m         <!--采用终端默认设置，即取消颜色设置-->
+    e.g：
+    \033[1;31;40m   <!--1-highlight;31-foreground red;40-background black-->
+    \033[0m         <!--set all into default-->
     '''
     WARNING = '\033[0;37;41m'
     ENDC = '\033[0m'
@@ -65,6 +65,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
 from matplotlib import cm
+ 
  
 def filter(ls):
     '''
