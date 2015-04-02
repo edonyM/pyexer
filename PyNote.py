@@ -79,4 +79,53 @@ def pyIdiom_swap(a,b):
     Swap a and b
     '''
     a,b = b,a
+    return a,b
+
+def cache_mech():
+    '''
+    Reference and equal in Python Mechanism
+    '''
+    print('reference list ls_1 and ls_2')
+    ls_1 = [1,2,3]
+    ls_2 = ls_1
+    print('ls_1 = [1,2,3]\nls_2 = ls_1)
+    if(ls_1==ls_2):
+        print('ls_1 and ls_2 have the same value, said "ls_1 == ls_2"')
+    else:
+        print('ls_1 and ls_2 have the different values, said "ls_1 != ls_2"')
+    if(ls_2 is ls_1):
+        print('ls_1 and ls_2 are referencing the same object')
+    else:
+        print('ls_1 and ls_2 are referencing the different objects')
+
+    ls_1 = [1,2,3]
+    ls_2 = [1,2,3]
+    print('ls_1 = [1,2,3]\nls_2 = [1,2,3])
+    if(ls_1==ls_2):
+        print('ls_1 and ls_2 have the same value, said "ls_1 == ls_2"')
+    else:
+        print('ls_1 and ls_2 have the different values, said "ls_1 != ls_2"')
+    if(ls_2 is ls_1):
+        print('ls_1 and ls_2 are referencing the same object')
+    else:
+        print('ls_1 and ls_2 are referencing the different objects')
+
+    print('Python cache little digits and strings')
+    x = 34
+    y = 34
+    print('x = 34\ny = 34')
+    if(x==y):
+        print('x and y have the same value, said "x == y"')
+    else:
+        print('ls_1 and ls_2 have the different values, said "x != y"')
+    if(x is y):
+        print('x and y are referencing the same object')
+    else:
+        print('x and y are referencing the different objects')
+
+def str2FilePath():
+    '''
+    when we read file from a file direction, we should make sure that the type casting can not work.
+    '''
+    path = r'/home/edony/code/py'
 
