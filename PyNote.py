@@ -73,3 +73,10 @@ def filter(ls):
     '''
     tmp = set(ls)
     return list(tmp)
+
+def pyIdiom_swap(a,b):
+    '''
+    Swap a and b
+    '''
+    a,b = b,a
+
