@@ -81,7 +81,7 @@ def pyIdiom_swap(a,b):
     a,b = b,a
     return a,b
 
-def cache_mech():
+def cache_mechanism():
     '''
     Reference and equal in Python Mechanism
     '''
@@ -128,4 +128,18 @@ def str2FilePath():
     when we read file from a file direction, we should make sure that the type casting can not work.
     '''
     path = r'/home/edony/code/py'
+    #f = open(path+'test.bat')
+
+def slice2str():
+    """
+    slicing the string that has many ways:
+    ...s[0:4]<--str([s[0],s[1],s[2],s[3]])
+    ...s[-3:-1]<--str(s[len(s)-3],...)
+    ...s[0:10:2]<--take a stride with 2
+
+    s[:-1] help to remove the last item in the string, especially '\n','\r'
+    P.S.
+        for text file removing whitespace, we are recommended to use str.rstrip()
+    """
+    pass
 
