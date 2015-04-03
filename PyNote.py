@@ -158,3 +158,21 @@ def format2str():
     print('\n%s is a %d number'%('edony',24))
     print('\n{0} is a {1} number'%{'edony',24})
     print('\n{0[spam]} is a {0[age]} numbers'%{'spam':'edony','age':24})
+
+def readintomatrix():
+    '''
+    use python to read file into matrix
+    '''
+    import numpy as np
+    X = []
+    f = open('/home/shared/filename')
+    row = 0
+    tmp = f.readline().split()
+    colum = len(tmp)
+    for line in f.readlines():
+        X.extend(tmp)
+        row += 1
+        tmp = line.split()
+    X = np.array(X)
+    X.reshape(row,colum)
+    return X
