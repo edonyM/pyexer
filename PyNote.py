@@ -143,3 +143,10 @@ def slice2str():
     """
     pass
 
+def list2str():
+    '''
+    way to do conversion about list and string in python
+    '''
+    s = 'spam'
+    l = list(s)
+    s_again = ''.join(l)
