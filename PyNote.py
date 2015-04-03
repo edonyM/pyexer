@@ -150,3 +150,11 @@ def list2str():
     s = 'spam'
     l = list(s)
     s_again = ''.join(l)
+
+def format2str():
+    '''
+    string format control way
+    '''
+    print('\n%s is a %d number'%('edony',24))
+    print('\n{0} is a {1} number'%{'edony',24})
+    print('\n{0[spam]} is a {0[age]} numbers'%{'spam':'edony','age':24})
