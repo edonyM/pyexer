@@ -88,7 +88,7 @@ def cache_mechanism():
     print('reference list ls_1 and ls_2')
     ls_1 = [1,2,3]
     ls_2 = ls_1
-    print('ls_1 = [1,2,3]\nls_2 = ls_1)
+    print('ls_1 = [1,2,3]\nls_2 = ls_1')
     if(ls_1==ls_2):
         print('ls_1 and ls_2 have the same value, said "ls_1 == ls_2"')
     else:
@@ -100,7 +100,7 @@ def cache_mechanism():
 
     ls_1 = [1,2,3]
     ls_2 = [1,2,3]
-    print('ls_1 = [1,2,3]\nls_2 = [1,2,3])
+    print('ls_1 = [1,2,3]\nls_2 = [1,2,3]')
     if(ls_1==ls_2):
         print('ls_1 and ls_2 have the same value, said "ls_1 == ls_2"')
     else:
@@ -182,3 +182,26 @@ def dictionary():
     dictionary is a hash
     '''
     D = {'edony':24,'cc':25,'murpht':34}
+
+def evalVSpickle():
+    '''
+    pickle is modle of python that help to save almost all of the python objects into files
+
+    eval convet to any object in python
+    '''
+    import pickle
+    D = {'a':1,'b':2}
+    F = open('file/path','wb')
+    pickle.dump(D,F)
+    F.close
+    #...load the file...
+    ## F = open('file/path','rb')
+    ## pickle.load(F)
+    ## F.close()
+    #........................
+    X = []
+    f = open('another/file/path','w')
+    tmp = f.readline().split()
+    for i in range(colums):
+        tmp[i] = eval(tmp[i])
+    X.extend(tmp)
