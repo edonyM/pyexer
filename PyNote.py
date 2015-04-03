@@ -176,3 +176,9 @@ def readintomatrix():
     X = np.array(X)
     X.reshape(row,colum)
     return X
+
+def dictionary():
+    '''
+    dictionary is a hash
+    '''
+    D = {'edony':24,'cc':25,'murpht':34}
