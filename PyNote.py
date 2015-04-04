@@ -221,3 +221,24 @@ def copyVSreference():
     L_cp = L[:]
     D_cp = D.copy()
     D_deepcp = copy.deepcopy(D) # copy the inside data structure(said list X)
+
+def equalityVSsame():
+    '''
+    equivalent and same object in python
+    '==' test all objects in variables recursively
+    'is' test if the two objects are the same object(in the same memeory)
+    '''
+    L1=[1,('a',3)]
+    L2=[1,('a',3)]
+    L1==L2 #True
+    L1 is L2 #False
+
+    S1 = 'spam'
+    S2 = 'spam'
+    S1==S2 #True
+    S1 is S2 #True
+
+    S3 = 'a longer string'
+    S4 = 'a longer string'
+    S3==S4 #True
+    S3 is S4 #False(because the S3 is a long string, python cache mechenism will create an other object for S4)
