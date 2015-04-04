@@ -205,3 +205,19 @@ def evalVSpickle():
     for i in range(colums):
         tmp[i] = eval(tmp[i])
     X.extend(tmp)
+
+def copyVSreference():
+    '''
+    understand the usage of cope and reference in python.
+    '''
+    import copy
+    X = [1,2,3]
+    L = ['a',X,'b']
+    D = {'x':X,'y':2}
+    X[2] = 'edony'
+    # L and D are referencing X, so L and D are changed after we change X
+    print(L)
+    print(D)
+    L_cp = L[:]
+    D_cp = D.copy()
+    D_deepcp = copy.deepcopy(D) # copy the inside data structure(said list X)
