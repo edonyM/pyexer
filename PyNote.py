@@ -242,3 +242,9 @@ def equalityVSsame():
     S4 = 'a longer string'
     S3==S4 #True
     S3 is S4 #False(because the S3 is a long string, python cache mechenism will create an other object for S4)
+
+def PyProgram():
+    '''
+    be clear about python program language
+    '''
+
