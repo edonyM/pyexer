@@ -246,5 +246,16 @@ def equalityVSsame():
 def PyProgram():
     '''
     be clear about python program language
+    ...indent
+    ...semicolon
+    ...pairs for code block
     '''
+    #yield in python
+    def func_yield(n):
+        for i in range(int(n)):
+            yield i
+            print('NO. of iter: %d'%i+1)
+    #in the function calling
+    for i in func_yield(10):print(i+10)
 
+def Py
