@@ -298,7 +298,8 @@ def Pyloops():
     '''
     ls = [1,2,3]
     for item in ls:
-        print(item,end=' ')# python3 syntax
+        #print(item,end=' ')# python3 syntax
+        print item
 
     ls1=['e','d','n']
     tmp = list(zip(ls,ls1))
@@ -320,4 +321,48 @@ def iterator():
     ... NOTE:__next__() and next() sometimes are different
     '''
     pass
+
+def Pyfunction():
+    '''
+    def is a key word to define a function in python
+    and if python function we might use some key words, they are:
+    ... 'def' 'lambda' 'yield' 'return' 'global' 'nonlocal'(python3.x)
+    '''
+    pass
+
+def PyNamespace():
+    '''
+    namespace control the range of variables's access space
+    so called rule: LEGB(local,enclosing,global,builtin)
+    ... the order of LEGB query:L-->E-->G-->B
+
+    global variables == module attribute
+    '''
+    def hider():
+        open='spam' # local variables hides builtin
+        #...some operations
+        open('data.txt') # this will not open a file in this scope
+
+    def marker(N): #factory function
+        def action(X):
+            return X**N
+    return action
+    f = marker(2)
+    f(3) # 9
+    f(4) # 16
+    g = marker(3)
+    g(3) # 27
+    f(3) # 9
+    g(4) # 64
+    f(4) # 16
+
+    def lambda_func():
+        lambda x:x**2
+        lambda x,i=2:x**i
+
+    def nonlocal_func():
+        '''
+        nonlocal variables can remember in enclosing scope and this a python3.x key word
+        '''
+        pass
 
