@@ -258,4 +258,66 @@ def PyProgram():
     #in the function calling
     for i in func_yield(10):print(i+10)
 
-def Py
+def Pystdout():
+    '''
+    standard input stream redirection in python
+    '''
+    import sys
+    originstream = sys.stdout # backup the origin stdout stream
+    sys.stdout = open('~/tmp/log/log.txt','a')
+    print('edony')
+    print('...')
+    #...and so on
+    sys.stdout.close()
+    f = open('~/tmp/log/log.txt','r')
+    for line in f.readlines():
+        print line
+    f.close()
+
+def Pyif():
+    '''
+    a better way to switch case is builtin dictionary(much more flexiable)
+    if syntax:
+    ... if expression:
+    ...     do something
+    ... elif expression2:
+    ...     do something
+    ... elif expression3:
+    ...     do something
+    ... else:
+    ...     do something
+    '''
+    pass
+
+def Pyloops():
+    '''
+    loops with 'while' and 'for'
+    especially, you can add 'else' into the end of the while and for loops
+    and when the loops are ended with 'break' the expression after 'else'
+    will be executed
+    '''
+    ls = [1,2,3]
+    for item in ls:
+        print(item,end=' ')# python3 syntax
+
+    ls1=['e','d','n']
+    tmp = list(zip(ls,ls1))
+    for (a,b) in tmp:
+        print('(%s,%s)'%(a,b))
+
+    keys=['edony','cc']
+    value=[23,24]
+    d = dict(zip(keys,value))
+    
+    for iter in enumerate(ls): # builtin function for iterator for a iteratorable object
+        print ls
+        
+def iterator():
+    '''
+    iteratorable object in python to access each member in iteratorable object
+    ... file iterator:file.readline()(or file.readlines() or file.__next__())
+    ... manual iterator:next() and iter()
+    ... NOTE:__next__() and next() sometimes are different
+    '''
+    pass
+
