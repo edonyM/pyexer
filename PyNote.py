@@ -366,3 +366,30 @@ def PyNamespace():
         '''
         pass
 
+def keyarguments():
+        '''
+        there are some different arguments:
+        ... norm parameter % func(value) ====> def func(name)
+        ... keyword parameter(default parameter) % func(name=value) ====> def func(name=value)
+        ... all objects based on position % func(*sequence) ====> def func(*name)(def func(*arg,name))
+        ... all keys and values base on position % func(**dict) ====> def func(**name)
+        '''
+        # in python3.x, we can refer help(print) to get the details of these parameter
+        pass
+
+def func_attr():
+    '''
+    dir(func_name) to check the attributes of function named func_name
+    access the attributes of func_name. e.g. func_name.attri
+    ------------------------------------------------------------------
+    lambda a fast implementation of function
+    improve the simplicity of your code
+    ------------------------------------------------------------------
+    filter,reduce,map
+    ------------------------------------------------------------------
+    buitin function > list comprehension > for loops
+    '''
+    counter = range(10)
+    list(map(lambda x:x**i,counter)) #[0,1,4,9,16,25,36,49,64,81]
+    list(filter(lambda x:x>0,counter)) #[1,2,3,4,5,6,7,8,9]
+    reduce(lambda x,y:x+y,counter) #45
