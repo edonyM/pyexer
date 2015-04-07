@@ -393,3 +393,86 @@ def func_attr():
     list(map(lambda x:x**i,counter)) #[0,1,4,9,16,25,36,49,64,81]
     list(filter(lambda x:x>0,counter)) #[1,2,3,4,5,6,7,8,9]
     reduce(lambda x,y:x+y,counter) #45
+
+def pytime():
+    '''
+    to figure out which one of the techologies is the best, I can time it
+    '''
+    import time
+    start = time.clock()
+    #...
+    end = time.clock()
+    total = end - start
+
+def pytrap():
+    '''
+    personally, better habits can help to avoid these
+    '''
+    pass
+
+def pyimportmodule():
+    '''
+    module is the highest level of python code.
+    module is a namespace which distinguish by files
+    ...key words are 'import','from','imp.reload'
+    ------------------------------------------------
+    PYTHON FRAMEWORK 
+    well, framework is a optimized way to cut the program into different sets of source code and the essential communications between sets are properly built.
+    ------------------------------------------------
+    schedule about 'import':
+    ...1> search the file of the module
+    ......(1)main direction of the program
+    .........root of the program
+    ......(2)PYTHONPATH direction
+    .........python environment variable
+    ......(3)standard link library direction
+    .........the direction of standard library module($(PyDir)/Lib/site-packages)
+    ......(4)the details in *.pth file
+    .........a new way that use a file to realize the PYTHONPATH setting. 
+    .........You can put this file into the direction of standard library
+    ......(5)the type of file
+    ...2> compile them into bytecode
+    ......(1)optional, check the timestamp if it needs to be compiled
+    ...3> run the bytecode file
+    '''
+    pass
+
+def pycreatemodule():
+    '''
+    import module # import the whole module and a variable will reference the module object
+    from module import attributes # import the specific attribute and a same named variable reference it
+    form module import * # import the all the attributes and create same names for each of them
+    ------------------------------------------------
+    import module might tricks you on namespace.
+    ------------------------------------------------
+    dir()or__dic__() help to get the attributes of module
+    '''
+    pass
+
+def pypackageimport():
+    '''
+    import the modules from a specific direction called package import
+    ...import dir1.dir2.dir3.packagemodule
+    ...1>dir1 must be in the python search path
+    ...2>dir2 and dir3 must have a file named __init__.py which works as a hook nothing else
+    ...3>if you want to import any module in dir2 or dir3, import needs whole direction
+    -------------------------------------------------
+    relative import and absolutely import
+    ...1>from . import spam 
+    ......relative to this package
+    ...2>from .spam import name 
+    ......from named spam module import attribute name and the spam module in the same direction of current file level
+    ...3>from __future__ import absolute_import
+    ......open up the absolute searching of python path
+    ...4>default searching is that relative searching comes first and absolute searching comes after
+    '''
+    pass
+
+def pyadvancemodule():
+    '''
+    1>data hiding
+    2>__future__ module
+    3>__name__ variable
+    4>sys.path
+    5>list tools
+    '''
