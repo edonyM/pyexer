@@ -488,5 +488,84 @@ def pyadvancemodule():
 
 def pyoop():
     '''
-
+    oop: inheritance and combination
+    ... object.attribute
+        climb the class tree to find the attributes(from downside to upside and from left to right)
+    ... class and instance
+        class is a 'factory' to produce instance
+    ... overload
+        special hook of builtin operation that help to overload this operation(e.g. '+')
     '''
+    class c2:pass
+    class c3:pass
+    class c1(c2,c3):pass #superclasses c2,c3
+    I1 = c1()
+    I2 = c2()
+    class employee:pass # general superclass
+    class engineer(employee):pass # specialize subclass(we do not change the employee class but customize it)
+
+def pycreateinstance():
+    '''
+    instance to create class and object in python
+    '''
+    class person():
+        def __init__(self,name,job,pay): #constructor
+            self.name = name # self is an instance of class object
+            self.job = job
+            self.pay = pay
+
+        def lastName(self):              #package the operations on class object into the class inside
+            return self.name.split()[-1]
+
+        def giveRaise(self,percent):     #packaging into class inside is a better way to maintenance that avoid
+                                         #hard-coded
+            self.pay = int(self.pay*(1+percent))
+
+        def __str__(self):               #overload print()
+            return 'person: %s, %s'%(self.name,self.pay)
+
+    class manager(person): #customize class person
+        def giveRaise(self,percent,bound):
+            self.pay = int(self.pay*(1+percent+bound)) # not a good idea when the way to calculate pay changes
+                                                       # because you will recode twice for person and manager
+        def giveRaise(self,percent,bound):
+            self.pay = person.giveRaise(self,percent+bound) # better idea with class reference
+
+    #introspection tools
+    #object.__class__
+    #object.__name__
+    #object.__dict__
+    #dir(object)
+    #-------------------------------------------------------------------------------------------------------#
+    #finally, add the self test block
+    if __name__ = '__main__':
+        #testing operation
+        #...
+
+def pyclass():
+    '''
+    class <name>(superclass,...):
+        data = value            #shared class data(class attr)
+        def method(self,...):
+            self.member = value #per-instance data(instance attr)
+    '''
+    class Super(): #mostly like abstract base class
+        '''
+        abstract base class work as a framework that user needs to fill in the blank(e.g. self.action())
+        '''
+        def delegate(self):
+            self.action()
+        def action(self):
+            assert False,'action must be define'
+
+    class Provider(Super):
+        def action(self):
+            print 'spam'
+
+    # special syntax for abc
+    from abc import ABCMeta,abstractmethod
+    class Super(metaclass=ABCMeta):
+        @abstractmethod #decorator
+        def method(self,...):
+            pass
+
