@@ -471,8 +471,22 @@ def pypackageimport():
 def pyadvancemodule():
     '''
     1>data hiding
+    ...'from *' import module and set a reference between a variable and module's attributes
+    ...look out! 'from *' will override you variables silently
+    ...'_X' can avoid 'from *' import the module
     2>__future__ module
+    ... from __future__ import featurename
     3>__name__ variable
+    ... each module has an __name__ attribute and python set it automatically to the module name or '__main__'
+    ... if __name__ == '__main__': #add this to the end of the module to check it is import or execute operation
+    ...     #do the execution      #__name__ attribute is a useful unit test(self test)
     4>sys.path
-    5>list tools
+    ... import sys
+    ... sys.path is the list of the import searching directions
+    '''
+    pass
+
+def pyoop():
+    '''
+
     '''
