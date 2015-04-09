@@ -569,3 +569,184 @@ def pyclass():
         def method(self,...):
             pass
 
+def pyoverload():
+    '''
+    almost all of builtin operations can be overloaded
+    '''
+    def __init__():pass #constructor
+    def __del__():pass #destructor
+    def __add__():pass #+
+    def __iadd__():pass #+=
+    def __radd__():pass #right +
+    def __getitem__():pass #x[2](slice() will call this operation)
+    def __setitem__():pass #x[3]=value
+    def __iter__():pass #iterator object on iter(copy the iterator object if mutiple iterators are needed)
+    def __next__():pass #call builtin next
+    def __contain__():pass #prefer in
+    def __getattr__():pass #dot operation
+    def __setattr__():pass #avoid limitless recursive
+    def __call__(self,*pargs,**kargs):pass #collect arbitrary arguments
+    #...
+    
+def pydesignclass():
+    '''
+    1> the connection betweeen classes(is-a:inheritence or multiple inheritence,has-a:enclose)
+    2> delegation with __getattr__()
+    3> "private attributes" with _X #not a syntax and just a notation
+    4> variable's name mangling with __X(==_classname__X) #helpful for name confliction
+    5> binding
+        >>> class Spam:
+        >>>     def doit(self,message):
+        >>>         print(message)
+        >>> object1 = Spam()
+        >>> object1.doit('hello') #bound method object
+        >>> object2 = Spam()
+        >>> t = Spam.doit
+        >>> t(object2,'hello,two') #unbound method object
+    6> class factory
+        >>> def factory(aClass, *args): #more generalized factory==>def factory(aClass,*args,**kwargs):...
+        >>>     return aClass(*args)
+        >>> class Spam:
+        >>>     def doit(self,message):
+        >>>         print(message)
+        >>> class Person:
+        >>>     def __init__(self,name,job):
+        >>>         self.name = name
+        >>>         self.job = job
+        >>> object1 = factory(Spam) #make object1
+        >>> object2 = factory(Person,'Guido','guru') #make object2
+    '''
+    pass
+
+def pyadvanceclass():
+    '''
+    1> extend the builtin operation
+    ... overload the builtin
+    ... subclass
+    2> new-style class
+    ... DO NOT UNDERSTAND WHAT HE SAYS!!!
+    ... class name(object): #object is a key word in python for new-style class and object is most base type
+    ...     pass
+    3> diamond pattern
+        >>> class A:
+        >>>     attr = 1
+        >>> class B(A):
+        >>>     pass
+        >>> class C(A):
+        >>>     attr = 2
+        >>> class D(B,C):
+        >>>     pass
+        >>> x = D()
+        >>> x.attr
+        1
+        >>> # class inheritence searching is like a binary tree searching
+        >>> # so the search order is D->B->A->C
+        >>> # -----------------------------------------------------------
+        >>> class A(object):
+        >>>     attr = 1
+        >>> class B(A):
+        >>>     pass
+        >>> class C(A):
+        >>>     attr = 2
+        >>> class D(B,C):
+        >>>     pass
+        >>> x = D()
+        >>> x.attr
+        2
+        >>> # new-style class inheritence searching is changed
+        >>> # so the searching order is D->B->C->A
+    4> static methond and class method
+        >>> class Spam:
+        >>>     numInstance = 0
+        >>>     def __init__(self):
+        >>>         Spam.numInstance = Spam.numInstance + 1
+        >>>     def printNumInstance():#fails in python2.x, but works in python3.x, not a good idea
+        >>>         print("Number of instances created: ",Spam.numInstance)
+        >>>
+        >>> class Method:
+        >>>     def imeth(self,x):#instance method
+        >>>         print(self,x)
+        >>>     def smeth(x):#static method:no instance passed
+        >>>         print(x)
+        >>>     def cmeth(cls,x):#instance method:get class not instance
+        >>>         print(cls,x)
+        >>>     smeth = staticmethod(smeth)#make smeth a static method
+        >>>     cmeth = classmethod(cmethod)#make cmeth a class method
+    5> function decotator:'@ + metafunction'
+        >>> class C:
+        >>>     @staticmethod #decoration syntax
+        >>>     def meth():
+        >>>         pass
+        >>> # example for function decorator
+        >>> class tracer:
+        >>>     def __init__(self,func):
+        >>>         self.calls = 0
+        >>>         self.func = func
+        >>>     def __call__(self,*args):
+        >>>         self.calls += 1
+        >>>         print('call %s to %s'%(self.calls,self.func.__name__))
+        >>>         self.func(*args)
+        >>> @tracer
+        >>> def spam(a,b,c):
+        >>>     print(a,b,c)
+        >>> spam(1,2,3)
+        call 1 to spam
+        1 2 3
+        >>> spam('a','b','c')
+        call 2 to spam
+        a b c
+        >>> spam(4,5,6)
+        call 3 to spam
+        4 5 6
+    6> class decorator
+        >>> def count(aClass):
+        ...     aClass.numInstance = 0
+        ...     return aClass
+        >>> @count
+        >>> class Spam:pass
+        >>> @count 
+        >>> class Sub(Spam):pass
+        >>> @count 
+        >>> class Other(Spam):pass
+        >>> #meta class
+        >>> class Meta(type):
+        ...     def __new__(meta,classname,supers,classdict):pass
+        >>> class C(metaclass=Meta):pass
+    7> class trap
+        >>> class X:
+        ...     a=1
+        ...
+        >>> I = X()
+        >>> I.a
+        1
+        >>> X.a
+        1
+        >>> X.a = 2
+        >>> I.a
+        2
+        >>> J = X()
+        >>> J.a
+        2
+        >>> #attribute trap
+        >>> class C:
+        ...     shared = []
+        ...     def __init__(self):
+        ...         self.perobj = []
+        ...
+        >>> x = C()
+        >>> y = C()
+        >>> y.shared,y.perobj
+        ([],[])
+        >>> x.shared.append('spam')
+        >>> x.perobj.append('spam')
+        >>> x.shared,x.perobj
+        (['spam'],['spam'])
+        >>> y.shared,y.perobj
+        (['spam'],[]])
+        >>> C.shared
+        ['spam']
+        '''
+        pass
+
+def pyexception():
+    '''
