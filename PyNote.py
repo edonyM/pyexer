@@ -750,3 +750,96 @@ def pyadvanceclass():
 
 def pyexception():
     '''
+    "try/except","try/finally","raise","assert","with/as"
+    1> catch exception
+        >>> try:
+        ...     x[99999]
+        ... except IndexError:
+        ...     print('catch exception')
+    2> raise exception
+        >>> try:
+        ...     raise IndexError
+        ... except IndexError:
+        ...     print('catch exception')
+        >>> #another raise exception
+        >>> assert False, 'Assert Error'
+    3> user definition
+        >>> class Bad(Exception):
+        ...     pass
+        >>> def doomed():
+        ...     raise Bad()
+        >>> try:
+        ...     doomed()
+        ... except Bad:
+        ...     print('got Bad')
+    4> terminate
+        >>> try:
+        ...     x[9999]
+        ... finally:
+        ...     print('after fetch')
+        >>> # if there is exception, the print will not be executed
+        >>> def after():
+        ...     try:
+        ...         x[999999]
+        ...     finally:
+        ...         print('after fetch')
+        ...     print('after fetch?')
+        >>> after()
+        after fetch
+        Traceback ...
+        >>> after()
+        after fetch
+        after fetch?
+    '''
+    pass
+
+def pyexcepdetail():
+    '''
+    details on exception in python
+    1> try/except/else
+        else: if the exception is not happen, the else expresion will be executed
+        #e.g.
+        try:
+            main-action
+        except Exception1:
+            handler1
+        except Exception2:
+            handler2
+        ...
+        else:
+            else-block
+        finally:
+            finally-block
+    2> raise
+        raise <instance>#raise IndexError
+        raise <class>#raise IndexError()
+        #e.g.
+        class MyExc(Exception):pass
+        raise MyExc('spam')
+        try:
+            ...
+        except MyExc as X:
+            print(X.args)
+    3> assert
+        assert <test>,<data> #optional raise
+    4> with/as
+        with open('/tmp/file') as myfile:
+            for line in myfile.readlines():
+                print(line)
+                ...
+    '''
+    pass
+
+def pyexcepclass():
+    '''
+    #builtin exception class
+    class Exception
+    class BaseException
+    #this just help to know about your code running details, debuging
+    '''
+    pass
+
+def pyadvance():
+
+
+
