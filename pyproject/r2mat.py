@@ -94,7 +94,7 @@ class RIn:
         MAT = [[eval(item[0]),eval(item[1]),eval(item[2])] for item in MAT]
         return MAT
     @staticmethod
-    def ind_ls2float(MAT):
+    def ind_ls2float(MAT): # bad idea
         for item in MAT:
             row = MAT.index(item)
             MAT[row] = [eval(item[0]),eval(item[1]),eval(item[2])]
