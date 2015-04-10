@@ -840,6 +840,211 @@ def pyexcepclass():
     pass
 
 def pyadvance():
+    '''
+    1> advanced string: unicode in python2 and python3
+    2> attribute management:attribute intercept
+        >>> #######property######
+        >>> class Person:
+        >>>     def __init__(self,name):
+        >>>         self._name = name
+        >>>     def getName(self):
+        >>>         print('fetching...')
+        >>>         return self._name
+        >>>     def setName(self,value):
+        >>>         print('changing...')
+        >>>         self._name = value
+        >>>     def delName(self):
+        >>>         print('removing...')
+        >>>         def self._name
+        >>>     name = property(getName,setName,delName,'name property docs')
+        >>> 
+        >>> bob = Person('Bob Smith')
+        >>> print(bob.name)
+        >>> bob.name = 'Robert Smith'
+        >>> print(bob.name)
+        >>> del bob.name
+        >>> print('-'*10)
+        >>> sue = Person('Sue Jones')
+        >>> print(sue.name)
+        >>> print(Person.name.__doc__)
+        >>>#***************************************#
+        >>> ######property decorator######
+        >>> class Person:
+        >>>     def __init__(self,name):
+        >>>         self._name = name
+        >>>     @property               # property decorator
+        >>>     def name(self):         # name = property(name)
+        >>>         "name property docs"
+        >>>         print('fetching...')
+        >>>         return self._name
+        >>>     @name.setter
+        >>>     def name(self,value):   # name = name.setter(name)
+        >>>         print('changing...')
+        >>>         self._name = value
+        >>>     @name.deleter
+        >>>     def name(self):         # name = name.deleter(name)
+        >>>         print('removing...')
+        >>>         del self._name
+        >>> #****************************************#
+        >>> ######descriptor######
+        >>> class Name:
+        >>>     "name descriptor docs"
+        >>>     def __get__(self,instance,owner):
+        >>>         print('fetching...')
+        >>>         return instance._name
+        >>>     def __set__(self,instance,value):
+        >>>         print('changing...')
+        >>>         instance._name = value
+        >>>     def __delete(self,instance):
+        >>>         print('removing...')
+        >>>         del instance._name
+        >>> class Person(Name):
+        >>>     def __init__(self,name):
+        >>>         self._name = name
+        >>>     name = Name()
+        >>> # another example #
+        >>> class DescState:
+        >>>     def __init__(self,value):
+        >>>         self.value = value
+        >>>     def __get__(self,instance,owner):
+        >>>         print('fetching...')
+        >>>         return self.value*10
+        >>>     def __set__(self,instance,value):
+        >>>         print('changing...')
+        >>>         self.value = value
+        >>> class CalcAttr:
+        >>>     X = DescState(2)
+        >>>     Y = 3
+        >>>     def __init__(self):
+        >>>         self.Z = 4
+        >>>
+        >>> obj = CalcAttr()
+        >>> print(obj.X, obj.Y,obj.Z)
+        fetching...
+        20 3 4
+        >>> obj.X = 5
+        changing...
+        >>> obj.Y = 6
+        >>> obj.Z = 7
+        >>> print(obj.X, obj.Y,obj.Z)
+        fetching...
+        50 6 7
+        >>> class InstState:
+        >>>     def __get__(self,instance,owner):
+        >>>         print('Inst fetching...')
+        >>>         return instance._Y * 100
+        >>>     def __set__(self,instance,value):
+        >>>         print('Inst changing...')
+        >>>         instance._Y = value
+        >>> class CalcAttr2:
+        >>>     X = DescState(2)
+        >>>     Y = InstState()
+        >>>     def __init__(self):
+        >>>         self._Y = 3
+        >>>         self.Z = 4
+        >>>
+        >>> obj = CalcAttr2()
+        >>> print(obj.X,obj.Y,obj.Z)
+        fetching...
+        Inst fetching...
+        20 300 4
+        >>> obj.X = 5
+        changing...
+        >>> obj.Y = 6
+        Inst changing...
+        >>> obj.Z = 7
+        >>> print(obj.X,obj.Y,obj.Z)
+        fetching...
+        Inst changing...
+        50 600 7
+        >>> ######operator overload######
+        >>> # __getattr__ intercept undefined attributes
+        >>> # __getattributes__ intercept every attributes
+        >>> class Cathcer:
+        >>>     def __getattr__(self,name):
+        >>>         print('get: ',name)
+        >>>     def __setattr__(self,name,value):
+        >>>         print('set: ',name,value)
+        >>> X = Catcher()
+        >>> X.job
+        >>> X.pay = 99
+        >>> # NOTE!!!
+        >>> def __getattribute__(self,name):
+        >>>     x = self.other          #LOOPS
+        >>> def __setattr__(self,name,value):
+        >>>     self.other = value      #LOOPS
+        >>> def __getattribute__(self,name):
+        >>>     x = self.__dict__['other']      #LOOPS
+        >>> #avoid these traps
+        >>> def __getattribute__(self,name):
+        >>>     x = object.__getattribute__(self,'other')
+        >>> def __setattr__(self,name,value):
+        >>>     self.__dict__['other'] = value
+        >>> def __setattr__(self,name,value):
+        >>>     object.setattr(self,'other',value)
+    the disadvantage of __getattr__ and __getattribute__ are not clear
+    '''
+    pass
+
+def pydecorator():
+    '''
+    decorator is syntastic sugar for rebounding function
+    @decorator          # first way
+    def F(arg):
+        ...
+
+    F(11)
+
+    def F(arg):
+        ...
+
+    F = decorator(F)     # second way
+    F(11)
+
+    class decorator
+    @decorator
+    class C:
+        ...
+
+    x = C(99)
+    '''
+    #technology details are ignored and review if needed
+    pass
+
+def pymetaclass():
+    '''
+    >>> class MetaOne(type):
+    >>>     def __new__(meta,classname,supers,classdict):
+    >>>         print('In MetaOne.new:',classname,supers,classdict,sep='\n...')
+    >>>         return type.__new__(meta,classname,supers,classdict)
+    >>>
+    >>> class Eggs:
+    >>>     pass
+    >>> print('making class')
+    >>> class Spam(Eggs,metaclass=MetaOne):
+    >>>     data = 1
+    >>>     def meth(self,arg):
+    >>>         pass
+    >>>
+    >>> print('making instance')
+    >>> X = Spam()
+    >>> print('data: ',X.data)
+
+    making class
+    In MetaOne.new:
+    ...Spam
+    ...(<class '__main__.Eggs'>,)
+    ...{'__module__': '__main__','data':1,'meth':<function meth at 0x0ll11>}
+    making instance
+    data: 1
+    '''
+    #metaclass in python help for API and tools coding
+    pass
+
+
+
+        
+
 
 
 
