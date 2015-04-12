@@ -75,7 +75,7 @@ class classifier(RIn):
     def __init__(self,filename,centroid):
         RIn.__init__(self,filename)
         self.data = RIn.ls2float(self.MAT)
-        self.centroid = centroid
+        self.centroid = int(centroid)
 
     def cluster(self):
         '''

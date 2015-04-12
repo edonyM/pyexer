@@ -67,4 +67,16 @@ from mpl_toolkits.mplot3d import Axes3D as Ax3
 from scipy import stats as st
 from matplotlib import cm
  
+from classifier import classifier
 
+def ex(path,k):
+    print('recording')
+    execute = classifier(path,k)
+    execute.rec()
+
+if __name__ == '__main__':
+    import sys
+    print('starting')
+    print(sys.argv[1],sys.argv[2])
+    ex(sys.argv[1],sys.argv[2])
+    print('Ok')
