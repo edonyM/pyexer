@@ -106,6 +106,9 @@ class classifier(RIn):
         self.cluster()
         self.seq()
         for i in range(self.centroid):
+            pcache = 'Cache'
+            if not pcache in os.listdir('./'):
+                os.mkdir('./Cache')
             name = './Cache/'+str(i)+'extraSeqPoints.sp'
             File = open(name,'w')
             for line in self.seq[i]:

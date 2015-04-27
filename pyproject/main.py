@@ -70,13 +70,15 @@ from matplotlib import cm
 from classifier import classifier
 
 def ex(path,k):
-    print('recording')
     execute = classifier(path,k)
     execute.rec()
 
 if __name__ == '__main__':
     import sys
+    import time as t
     print('starting')
-    print(sys.argv[1],sys.argv[2])
+    #print(sys.argv[1],sys.argv[2])
+    st = t.clock()
     ex(sys.argv[1],sys.argv[2])
-    print('Ok')
+    en = t.clock()
+    print('Ok\ntime: %f'%(en-st))
