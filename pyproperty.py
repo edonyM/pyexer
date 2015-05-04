@@ -16,7 +16,7 @@
  # 
  # twitter : @edonyzpc                                
  # 
- # Last modified:	2015-05-03 20:56
+ # Last modified:	2015-05-03 23:43
  # 
  # Filename:		pyproperty.py
  # 
@@ -57,14 +57,14 @@ class pcolor:
         self.ENDC = ''
         self.WARNING = ''
  
-import numpy as np
-import scipy as sp
-import math as m
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D as Ax3
-from scipy import stats as st
-from matplotlib import cm
+#import numpy as np
+#import scipy as sp
+#import math as m
+#import matplotlib as mpl
+#import matplotlib.pyplot as plt
+#from mpl_toolkits.mplot3d import Axes3D as Ax3
+#from scipy import stats as st
+#from matplotlib import cm
  
 class protest:
     def __init__(self,name,age):
@@ -92,6 +92,6 @@ if __name__ == '__main__':
     print(tmp.age)
     print(tmp._name)
     tmp._name = 'cc' #to change member data
-    tmp.age = 12 to #change member data
+    tmp.age = 12 #to change member data
     print(tmp.age)
     print(tmp._name)
