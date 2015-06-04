@@ -122,6 +122,35 @@ class Person(object):
     def name(self): # name = name.deleter(name)
         print('remove...')
         del self._name
+
+class Screen(object):
+    def __init__(self, width=None, height=None):
+        if width:
+            self._width = width
+        if height:
+            self._height = height
+        self._resolution = 786432
+
+    @property
+    def resolution(self):
+        return self._resolution
+
+    @property
+    def width(self):
+        return self._width
+
+    @width.setter
+    def width(self, wid):
+        self._width = wid
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, hei):
+        self._height = hei
+        
 if __name__ == '__main__':
     bob = Person('Bob Smith') # bob has a managed attribute
     print(bob.name) # Runs name getter (name 1)
