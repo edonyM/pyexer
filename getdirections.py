@@ -87,31 +87,37 @@ class PyColor(object):
         self.warningcolor = ''
         self.endcolor = ''
 
-def find_subdir(path):
-    all_subdir = []
-    for item in os.listdir(path):
-        if os.path.isdir(item):
-            all_subdir.append(path + '/' + item)
-    return all_subdir
+class GetDirections(object):
+    def __init__(self, path):
+        self.path = path
+        self.directions = []
+        self.files = []
 
-def all_dir(path, total_dirs):
-    os.chdir(path)
-    tmp_dir = find_subdir(path)
-    total_dirs.append(tmp_dir)
-    if len(tmp_dir) == 0:
-        return
-    else:
-        for item in tmp_dir:
-            all_dir(item, total_dirs)
+    def find_subdir(path):
+        all_subdir = []
+        for item in os.listdir(path):
+            if os.path.isdir(item):
+                all_subdir.append(path + '/' + item)
+        return all_subdir
 
-def structed_dir(all_directions):
-    return sorted([direction for item in all_directions for direction in item])
+    def all_dir(path, total_dirs):
+        os.chdir(path)
+        tmp_dir = find_subdir(path)
+        total_dirs.append(tmp_dir)
+        if len(tmp_dir) == 0:
+            return
+        else:
+            for item in tmp_dir:
+                all_dir(item, total_dirs)
 
-def getdir(path):
-    directions = []
-    all_dir(path, directions)
-    directions = structed_dir(directions)
-    return directions
+    def structed_dir(all_directions):
+        return sorted([direction for item in all_directions for direction in item])
+
+    def getdir(path):
+        directions = []
+        all_dir(path, directions)
+        directions = structed_dir(directions)
+        return directions
 
 if __name__ == '__main__':
 #    total_dir = []
