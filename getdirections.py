@@ -91,33 +91,43 @@ class GetDirections(object):
     def __init__(self, path):
         self.path = path
         self.directions = []
-        self.files = []
+        self.files = {}
 
-    def find_subdir(path):
+    @staticmethod
+    def _find_subdir(path):
         all_subdir = []
         for item in os.listdir(path):
             if os.path.isdir(item):
                 all_subdir.append(path + '/' + item)
         return all_subdir
 
-    def all_dir(path, total_dirs):
+    @staticmethod
+    def _all_dir(path, total_dirs):
         os.chdir(path)
-        tmp_dir = find_subdir(path)
+        tmp_dir = GetDirections._find_subdir(path)
         total_dirs.append(tmp_dir)
         if len(tmp_dir) == 0:
             return
         else:
             for item in tmp_dir:
-                all_dir(item, total_dirs)
+                GetDirections._all_dir(item, total_dirs)
 
-    def structed_dir(all_directions):
-        return sorted([direction for item in all_directions for direction in item])
+    def structed_dir(self):
+        if self.directions:
+            self.directions = sorted([direction for item in self.directions for direction in item])
+        else:
+            raise ValueError("Directions is empty!")
 
-    def getdir(path):
-        directions = []
-        all_dir(path, directions)
-        directions = structed_dir(directions)
-        return directions
+    def get_dir(self):
+        self._all_dir(self.path, self.directions)
+        self.structed_dir()
+
+    def all_files(self):
+        if self.directions:
+            for direction in self.directions:
+                os.chdir(direction)
+                list_dir = os.listdir(direction)
+                self.files[direction] = [file for file in list_dir if os.path.isfile(file)]
 
 if __name__ == '__main__':
 #    total_dir = []
@@ -125,10 +135,17 @@ if __name__ == '__main__':
 #    directions = structed_dir(total_dir)
 #    for direction in directions:
 #        print direction
-    path = '/home/edony/code/github/pyexer'
-    directions = getdir(path)
-    for direction in directions:
+#   path = '/home/edony/code/github/pyexer'
+#   directions = getdir(path)
+#   for direction in directions:
+#        print direction
+    test = GetDirections('/home/edony/code/github/pyexer')
+    test.get_dir()
+    test.all_files()
+    for direction in test.directions:
         print direction
-
+    for key in test.files.keys():
+        print key
+        print test.files[key]
 
 
