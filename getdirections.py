@@ -88,13 +88,26 @@ class PyColor(object):
         self.endcolor = ''
 
 class GetDirections(object):
+    """
+    Class GetDirections:
+        Get all the contents in the given path recursively and record the contents
+        into directions and files.
+    """
     def __init__(self, path):
+        """
+        path: given path
+        directions: all directions in path (include sub-directions)
+        files: all files in the paht (include the files in sub-directions)
+        """
         self.path = path
         self.directions = []
         self.files = {}
 
     @staticmethod
     def _find_subdir(path):
+        """
+        A protected method for list all the sub-directions in the path.
+        """
         all_subdir = []
         for item in os.listdir(path):
             if os.path.isdir(item):
@@ -103,6 +116,9 @@ class GetDirections(object):
 
     @staticmethod
     def _all_dir(path, total_dirs):
+        """
+        A protected method for list all the directions in path and record them.
+        """
         os.chdir(path)
         tmp_dir = GetDirections._find_subdir(path)
         total_dirs.append(tmp_dir)
@@ -113,21 +129,31 @@ class GetDirections(object):
                 GetDirections._all_dir(item, total_dirs)
 
     def structed_dir(self):
+        """
+        Structure the all directions found with their names.
+        """
         if self.directions:
             self.directions = sorted([direction for item in self.directions for direction in item])
         else:
             raise ValueError("Directions is empty!")
 
     def get_dir(self):
+        """
+        Main to get all the structured directions.
+        """
         self._all_dir(self.path, self.directions)
         self.structed_dir()
 
     def all_files(self):
+        """
+        Get all the files in the directions.
+        """
         if self.directions:
             for direction in self.directions:
                 os.chdir(direction)
                 list_dir = os.listdir(direction)
-                self.files[direction] = [file for file in list_dir if os.path.isfile(file)]
+                self.files[direction] = \
+                        [file_name for file_name in list_dir if os.path.isfile(file_name)]
 
 if __name__ == '__main__':
 #    total_dir = []
@@ -139,13 +165,13 @@ if __name__ == '__main__':
 #   directions = getdir(path)
 #   for direction in directions:
 #        print direction
-    test = GetDirections('/home/edony/code/github/pyexer')
-    test.get_dir()
-    test.all_files()
-    for direction in test.directions:
-        print direction
-    for key in test.files.keys():
+    TEST = GetDirections('/home/edony/code/github/pyexer')
+    TEST.get_dir()
+    TEST.all_files()
+    for testdir in TEST.directions:
+        print testdir
+    for key in TEST.files.keys():
         print key
-        print test.files[key]
+        print TEST.files[key]
 
 
