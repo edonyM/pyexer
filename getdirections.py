@@ -102,6 +102,7 @@ class GetDirections(object):
         self.path = path
         self.directions = []
         self.files = {}
+        self.color = PyColor()
 
     @staticmethod
     def _find_subdir(path):
@@ -155,23 +156,30 @@ class GetDirections(object):
                 self.files[direction] = \
                         [file_name for file_name in list_dir if os.path.isfile(file_name)]
 
+    def file_tree(self):
+        """
+        Get visualization of the path structure.
+        """
+        self.get_dir()
+        self.all_files()
+        if self.files:
+            print self.color.tipcolor, self.path, self.color.endcolor, '\n'
+            for key in self.files.keys():
+                print self.color.warningcolor, "|-- .%s\\"%key.split(self.path)[1],\
+                        self.color.endcolor
+                for file_name in self.files[key]:
+                    print " |    %s"%file_name
+                print " |"
+
 if __name__ == '__main__':
-#    total_dir = []
-#    all_dir('/home/edony/code/github/pyexer', total_dir)
-#    directions = structed_dir(total_dir)
-#    for direction in directions:
-#        print direction
-#   path = '/home/edony/code/github/pyexer'
-#   directions = getdir(path)
-#   for direction in directions:
-#        print direction
     TEST = GetDirections('/home/edony/code/github/pyexer')
-    TEST.get_dir()
-    TEST.all_files()
-    for testdir in TEST.directions:
-        print testdir
-    for key in TEST.files.keys():
-        print key
-        print TEST.files[key]
+#    TEST.get_dir()
+#    TEST.all_files()
+#   for testdir in TEST.directions:
+#       print testdir
+#   for key in TEST.files.keys():
+#       print key
+#       print TEST.files[key]
+    TEST.file_tree()
 
 
